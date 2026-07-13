@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Us — SLN Enterprise LLC | Seattle Cleaning</title>
+<meta name="description" content="The story behind SLN Enterprise LLC — a Seattle cleaning company built on trust, consistency, and the belief that every space deserves professional care.">
+<link rel="canonical" href="https://slnenterprisellc.online/about.html">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✦</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --black:#080808;--dark:#0E0D0D;--surf:#151212;--surf2:#1B1818;
+  --cream:#EDE8DF;--cream2:#F5F0E8;--gold:#C4A265;--gold2:#D4B483;
+  --gb:rgba(196,162,101,.18);--gb2:rgba(196,162,101,.1);
+  --t1:#EDE8DF;--t2:rgba(237,232,223,.55);--t3:rgba(237,232,223,.3);
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--dark);color:var(--t1);-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:'Cormorant Garamond',serif}
+a{text-decoration:none;color:inherit}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(8,8,8,.92);backdrop-filter:blur(16px);display:flex;align-items:center;justify-content:space-between;padding:0 6%;height:78px;border-bottom:1px solid var(--gb)}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:500;color:var(--cream);letter-spacing:.18em;text-transform:uppercase}
+.nav-logo span{color:var(--gold)}
+.nav-links{display:flex;gap:2.5rem;align-items:center}
+.nav-links a{font-size:.68rem;font-weight:400;color:var(--t2);letter-spacing:.2em;text-transform:uppercase;transition:color .2s}
+.nav-links a:hover,.nav-links a.active{color:var(--gold)}
+.nav-cta{border:1px solid var(--gb)!important;color:var(--gold)!important;padding:.5rem 1.3rem;font-size:.68rem!important;letter-spacing:.15em!important;transition:all .25s!important}
+.nav-cta:hover{background:var(--gold)!important;color:var(--dark)!important;border-color:var(--gold)!important}
+.hamburger{display:none;flex-direction:column;gap:6px;cursor:pointer;padding:4px}
+.hamburger span{display:block;width:22px;height:1px;background:var(--cream)}
+
+.page-hero{background:var(--black);padding:160px 6% 100px;position:relative;overflow:hidden;border-bottom:1px solid var(--gb)}
+.page-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 70% 40%, rgba(196,162,101,.05) 0%, transparent 65%)}
+.page-hero-inner{max-width:1200px;margin:0 auto;position:relative}
+.breadcrumb{font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:var(--t3);margin-bottom:1.5rem}
+.breadcrumb a{color:var(--gold)}
+.kicker{display:flex;align-items:center;gap:.85rem;margin-bottom:1.25rem}
+.kicker-line{width:28px;height:1px;background:var(--gold)}
+.kicker-text{font-size:.63rem;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);font-family:'Inter',sans-serif;font-weight:500}
+.page-hero h1{font-size:clamp(2.5rem,5vw,4.5rem);font-weight:300;color:var(--cream);line-height:1.1;margin-bottom:1.25rem}
+.page-hero h1 em{font-style:italic;color:var(--gold)}
+.page-hero p{font-size:.9rem;color:var(--t2);max-width:520px;line-height:1.9}
+
+section{padding:7rem 6%}
+.section-inner{max-width:1200px;margin:0 auto}
+.sec-title{font-size:clamp(1.9rem,3.5vw,3rem);font-weight:300;line-height:1.15;color:var(--cream)}
+.sec-title em{font-style:italic;color:var(--gold)}
+.sec-sub{font-size:.88rem;color:var(--t2);line-height:1.9;max-width:480px;margin-top:1rem}
+.btn-gold{display:inline-block;background:var(--gold);color:var(--dark);padding:.85rem 2rem;font-family:'Inter',sans-serif;font-size:.7rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;border:none;cursor:pointer;transition:all .25s}
+.btn-gold:hover{background:var(--gold2);box-shadow:0 8px 32px rgba(196,162,101,.3);transform:translateY(-1px)}
+
+/* STORY */
+.story{background:var(--dark)}
+.story-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--gb)}
+.story-pull{
+  background:var(--surf);padding:4rem;
+  display:flex;flex-direction:column;justify-content:flex-end;
+  position:relative;overflow:hidden;min-height:480px;
+  border-right:1px solid var(--gb);
+}
+.story-pull::before{
+  content:'"';font-family:'Cormorant Garamond',serif;
+  font-size:20rem;color:var(--gold);opacity:.05;
+  position:absolute;top:-2rem;left:1rem;line-height:1;
+}
+.pull-quote{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.5rem;font-style:italic;font-weight:300;
+  color:var(--cream);line-height:1.55;margin-bottom:2rem;
+  position:relative;z-index:1;
+}
+.pull-attr{font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);position:relative;z-index:1}
+.story-text{padding:4rem;display:flex;flex-direction:column;justify-content:center}
+.story-text h2{font-size:clamp(1.6rem,2.5vw,2.2rem);font-weight:300;color:var(--cream);margin-bottom:1.5rem;line-height:1.2}
+.story-text h2 em{font-style:italic;color:var(--gold)}
+.story-text p{font-size:.88rem;color:var(--t2);line-height:1.9;margin-bottom:1.1rem}
+
+/* VALUES */
+.values{background:var(--surf);border-top:1px solid var(--gb)}
+.values-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--gb);border:1px solid var(--gb);margin-top:3.5rem}
+.val-card{
+  background:var(--surf);padding:2.5rem 2rem;
+  position:relative;overflow:hidden;transition:background .3s;
+}
+.val-card::after{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(to right,var(--gold),transparent);transform:scaleX(0);transform-origin:left;transition:transform .35s}
+.val-card:hover{background:var(--surf2)}
+.val-card:hover::after{transform:scaleX(1)}
+.val-num{font-family:'Cormorant Garamond',serif;font-size:3.5rem;font-weight:300;color:rgba(196,162,101,.1);line-height:1;margin-bottom:1rem}
+.val-card h3{font-size:1.15rem;font-weight:400;color:var(--cream);margin-bottom:.6rem}
+.val-card p{font-size:.82rem;color:var(--t2);line-height:1.75}
+
+/* PROMISE */
+.promise{background:var(--dark)}
+.promise-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
+.promise-left p{font-size:.88rem;color:var(--t2);line-height:1.9;margin-top:1rem;margin-bottom:2.5rem;max-width:400px}
+.promise-list{list-style:none;display:flex;flex-direction:column;gap:0}
+.promise-item{padding:1.4rem 0;border-bottom:1px solid var(--gb);display:flex;gap:1rem;align-items:flex-start;transition:padding-left .25s;cursor:default}
+.promise-item:first-child{border-top:1px solid var(--gb)}
+.promise-item:hover{padding-left:.4rem}
+.promise-dash{width:16px;height:1px;background:var(--gold);flex-shrink:0;margin-top:.55rem}
+.promise-item p{font-size:.85rem;color:var(--t2);line-height:1.75}
+.certs-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--gb);border:1px solid var(--gb)}
+.cert-card{background:var(--surf);padding:2rem;text-align:center;transition:background .25s}
+.cert-card:hover{background:var(--surf2)}
+.cert-icon{font-size:1.75rem;margin-bottom:.85rem}
+.cert-card h4{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:400;color:var(--cream);margin-bottom:.35rem}
+.cert-card p{font-size:.75rem;color:var(--t3)}
+
+/* AREA */
+.area{background:var(--surf);border-top:1px solid var(--gb)}
+.area-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;margin-top:3rem}
+.area-text p{font-size:.88rem;color:var(--t2);line-height:1.9;margin-bottom:1.25rem}
+.area-tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.5rem}
+.area-tag{
+  border:1px solid var(--gb);color:var(--t2);
+  font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;
+  padding:.4rem .85rem;transition:all .2s;
+}
+.area-tag:hover{border-color:var(--gold);color:var(--gold)}
+.area-visual{
+  background:var(--surf2);border:1px solid var(--gb);
+  min-height:320px;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:1rem;
+}
+.area-pin{font-size:2.5rem}
+.area-visual-label{font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--t3)}
+
+/* CTA */
+.cta-band{background:var(--black);border-top:1px solid var(--gb);padding:7rem 6%;text-align:center;position:relative;overflow:hidden}
+.cta-band::before{content:'✦';position:absolute;font-family:'Cormorant Garamond',serif;font-size:28rem;color:var(--gold);opacity:.018;top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;line-height:1}
+.cta-band h2{font-size:clamp(2rem,4vw,3.2rem);font-weight:300;color:var(--cream);margin-bottom:1rem;position:relative}
+.cta-band h2 em{font-style:italic;color:var(--gold)}
+.cta-band p{font-size:.88rem;color:var(--t2);margin-bottom:2.5rem;position:relative}
+
+footer{background:#050505;padding:5rem 6% 2.5rem;border-top:1px solid var(--gb)}
+.footer-inner{max-width:1200px;margin:0 auto}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:4rem;padding-bottom:4rem;margin-bottom:2.5rem;border-bottom:1px solid var(--gb)}
+.f-logo{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:500;color:var(--cream);letter-spacing:.18em;text-transform:uppercase;margin-bottom:1.25rem}
+.f-logo span{color:var(--gold)}
+.f-about{font-size:.83rem;line-height:1.85;color:var(--t2)}
+.f-col h5{font-size:.6rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:1.25rem}
+.f-col a,.f-col p{display:block;font-size:.82rem;color:var(--t2);margin-bottom:.6rem;transition:color .2s}
+.f-col a:hover{color:var(--cream)}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;font-size:.7rem;color:var(--t3);gap:1rem;flex-wrap:wrap}
+.f-bottom-links{display:flex;gap:2rem}
+.f-bottom-links a{color:var(--t3);transition:color .2s}
+.f-bottom-links a:hover{color:var(--gold)}
+
+@media(max-width:1024px){.values-grid{grid-template-columns:1fr 1fr}.promise-grid{grid-template-columns:1fr;gap:3.5rem}.area-grid{grid-template-columns:1fr}.footer-top{grid-template-columns:1fr 1fr;gap:2.5rem}}
+@media(max-width:900px){.story-grid{grid-template-columns:1fr}.story-pull{border-right:none;border-bottom:1px solid var(--gb);min-height:320px}}
+@media(max-width:640px){nav{padding:0 4%}.nav-links{display:none}.nav-links.open{display:flex;flex-direction:column;position:absolute;top:78px;left:0;right:0;background:#080808;padding:1.75rem 4%;border-bottom:1px solid var(--gb);gap:1.5rem}.hamburger{display:flex}section{padding:5rem 4%}.page-hero{padding:130px 4% 70px}.story-pull,.story-text{padding:2.5rem}.values-grid{grid-template-columns:1fr}.certs-grid{grid-template-columns:1fr}.footer-top{grid-template-columns:1fr;gap:2rem}.footer-bottom{flex-direction:column;align-items:flex-start}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">SLN <span>Enterprise</span> LLC</a>
+  <div class="nav-links" id="nav-links">
+    <a href="index.html">Home</a>
+    <a href="services.html">Services</a>
+    <a href="about.html" class="active">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="contact.html" class="nav-cta">Request a Quote</a>
+  </div>
+  <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="breadcrumb"><a href="index.html">Home</a> &nbsp;/&nbsp; About</div>
+    <div class="kicker"><div class="kicker-line"></div><span class="kicker-text">Our Story</span></div>
+    <h1>Built on Trust.<br><em>Driven by Standards.</em></h1>
+    <p>SLN Enterprise LLC isn't just another cleaning company. We're a Seattle-based team that takes the work seriously — because the spaces people live and work in actually matter.</p>
+  </div>
+</div>
+
+<!-- STORY -->
+<section class="story">
+  <div class="section-inner" style="max-width:none;padding:0">
+    <div class="story-grid">
+      <div class="story-pull">
+        <blockquote class="pull-quote">Every home we clean belongs to someone who works hard. That space deserves to be treated with real care.</blockquote>
+        <div class="pull-attr">SLN Enterprise LLC &nbsp;·&nbsp; Founded in Seattle, WA</div>
+      </div>
+      <div class="story-text">
+        <h2>We Started Small.<br><em>We Stay Intentional.</em></h2>
+        <p>SLN Enterprise LLC was founded on a simple belief: professional cleaning shouldn't feel like a gamble. Too many people had hired services that showed up late, skipped corners, or sent different unfamiliar faces every time with no consistency or accountability.</p>
+        <p>We built something different. A team that shows up on time, follows a thorough process on every visit, and actually communicates clearly with clients. Not just a cleaning crew — a reliable partner for your home or business.</p>
+        <p>We've grown through word of mouth, one satisfied client at a time. And we plan to keep it that way — doing quality work, standing behind every clean, and treating every space we enter with the respect it deserves.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VALUES -->
+<section class="values">
+  <div class="section-inner">
+    <div class="kicker"><div class="kicker-line"></div><span class="kicker-text">What We Stand For</span></div>
+    <h2 class="sec-title">Our Core <em>Values</em></h2>
+    <div class="values-grid">
+      <div class="val-card">
+        <div class="val-num">01</div>
+        <h3>Trustworthiness</h3>
+        <p>You're inviting us into your home. Every team member is background-checked and trained before they ever step through a client's door.</p>
+      </div>
+      <div class="val-card">
+        <div class="val-num">02</div>
+        <h3>Consistency</h3>
+        <p>We use the same detailed checklist on every visit. Whether it's your first clean or your fiftieth, the standard never changes.</p>
+      </div>
+      <div class="val-card">
+        <div class="val-num">03</div>
+        <h3>Responsibility</h3>
+        <p>We use eco-friendly, non-toxic products wherever possible — because clean shouldn't come at the cost of your health or the environment.</p>
+      </div>
+      <div class="val-card">
+        <div class="val-num">04</div>
+        <h3>Communication</h3>
+        <p>We respond fast, confirm appointments, and are easy to reach. Our AI assistant is available 24/7 so you're never left waiting.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROMISE + CERTS -->
+<section class="promise">
+  <div class="section-inner">
+    <div class="promise-grid">
+      <div class="promise-left">
+        <div class="kicker"><div class="kicker-line"></div><span class="kicker-text">Our Commitment</span></div>
+        <h2 class="sec-title">The SLN <em>Promise</em></h2>
+        <p>We're not just trying to show up and check boxes. We're trying to be the cleaning service you actually stick with — the one you tell your friends about.</p>
+        <ul class="promise-list">
+          <li class="promise-item"><div class="promise-dash"></div><p>If you're not satisfied, we return within 24 hours and make it right — no questions, no charge.</p></li>
+          <li class="promise-item"><div class="promise-dash"></div><p>We never send unchecked strangers to your home. Every team member is vetted and trained directly by us.</p></li>
+          <li class="promise-item"><div class="promise-dash"></div><p>Your pricing is locked in. No surprise fees, no bait-and-switch quotes after the first visit.</p></li>
+          <li class="promise-item"><div class="promise-dash"></div><p>Reschedule, adjust, or cancel with reasonable notice — no complicated hoops or penalties.</p></li>
+          <li class="promise-item"><div class="promise-dash"></div><p>We bring every supply and piece of equipment. You don't need to provide a single thing.</p></li>
+        </ul>
+      </div>
+      <div class="certs-grid">
+        <div class="cert-card">
+          <div class="cert-icon">🛡️</div>
+          <h4>Fully Insured</h4>
+          <p>General liability coverage on every job</p>
+        </div>
+        <div class="cert-card">
+          <div class="cert-icon">🔒</div>
+          <h4>Bonded</h4>
+          <p>You're protected from the moment we arrive</p>
+        </div>
+        <div class="cert-card">
+          <div class="cert-icon">✅</div>
+          <h4>Background Checked</h4>
+          <p>Every team member, verified before day one</p>
+        </div>
+        <div class="cert-card">
+          <div class="cert-icon">⭐</div>
+          <h4>Satisfaction Guarantee</h4>
+          <p>We return if you're not completely happy</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICE AREA -->
+<section class="area">
+  <div class="section-inner">
+    <div class="kicker"><div class="kicker-line"></div><span class="kicker-text">Where We Work</span></div>
+    <h2 class="sec-title">Serving Greater <em>Seattle</em></h2>
+    <div class="area-grid">
+      <div class="area-text">
+        <p>We're based in Seattle and serve residential and commercial clients across King County and surrounding areas. From Capitol Hill apartments to Bellevue office buildings — we're close by and ready.</p>
+        <p>Not sure if we cover your area? Reach out and ask. We're always looking to expand where we can serve clients well.</p>
+        <div class="area-tags">
+          <span class="area-tag">Seattle</span>
+          <span class="area-tag">Bellevue</span>
+          <span class="area-tag">Kirkland</span>
+          <span class="area-tag">Redmond</span>
+          <span class="area-tag">Renton</span>
+          <span class="area-tag">Shoreline</span>
+          <span class="area-tag">Bothell</span>
+          <span class="area-tag">Burien</span>
+          <span class="area-tag">Tukwila</span>
+          <span class="area-tag">Mercer Island</span>
+        </div>
+      </div>
+      <div class="area-visual">
+        <div class="area-pin">📍</div>
+        <div class="area-visual-label">Seattle & King County, WA</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-band">
+  <div class="section-inner">
+    <h2>Ready to Work <em>With Us?</em></h2>
+    <p>Get a free, no-pressure quote for your home or business.</p>
+    <a href="contact.html" class="btn-gold">Get in Touch</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div><div class="f-logo">SLN <span>Enterprise</span> LLC</div><p class="f-about">Professional cleaning services for residential and commercial properties across Greater Seattle. Bonded, insured, and built on trust.</p></div>
+      <div class="f-col"><h5>Services</h5><a href="services.html">Residential Cleaning</a><a href="services.html">Deep Cleaning</a><a href="services.html">Move-In / Move-Out</a><a href="services.html">Commercial Cleaning</a><a href="services.html">Post-Construction</a></div>
+      <div class="f-col"><h5>Company</h5><a href="about.html">About Us</a><a href="services.html">Services</a><a href="contact.html">Contact</a><a href="contact.html">Get a Quote</a></div>
+      <div class="f-col"><h5>Contact</h5><p>📍 Seattle, WA</p><p>📞 (206) 555-0100</p><p>✉️ info@slnenterprisellc.online</p><p style="margin-top:.5rem;font-size:.75rem;line-height:1.8">Mon–Fri: 8am – 6pm<br>Sat: 9am – 4pm<br>Sun: By appointment</p></div>
+    </div>
+    <div class="footer-bottom"><span>© 2025 SLN Enterprise LLC. All rights reserved.</span><div class="f-bottom-links"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a><a href="contact.html">Contact</a></div></div>
+  </div>
+</footer>
+
+<button id="chat-bubble" aria-label="Chat with us">💬<span class="cw-badge">1</span></button>
+<div id="chat-panel"></div>
+<script>document.getElementById('hamburger').addEventListener('click',()=>document.getElementById('nav-links').classList.toggle('open'));</script>
+<script src="chat.js"></script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+{
+  "business": {
+    "name": "SLN Enterprise LLC",
+    "phone": "(206) 555-0100",
+    "email": "info@slnenterprisellc.online",
+    "location": "Seattle, WA"
+  },
+  "hours": {
+    "weekdays": "Mon–Fri: 8am – 6pm",
+    "saturday": "Sat: 9am – 4pm",
+    "sunday": "Sun: By appointment"
+  },
+  "services": [
+    {
+      "name": "Standard Residential Cleaning",
+      "price": "From $120/visit",
+      "description": "Regular maintenance cleaning for homes",
+      "options": "Weekly, bi-weekly, or monthly scheduling available"
+    },
+    {
+      "name": "Deep Cleaning",
+      "price": "From $220/visit",
+      "description": "Thorough top-to-bottom clean including inside appliances, baseboards, and detailed scrubbing",
+      "options": "Recommended for first-time clients or seasonal resets"
+    },
+    {
+      "name": "Move-In / Move-Out Cleaning",
+      "price": "From $280/unit",
+      "description": "Complete clean to help get your deposit back or prepare a new home",
+      "options": "Available for apartments, condos, and houses of all sizes"
+    },
+    {
+      "name": "Commercial Cleaning",
+      "price": "From $180/visit",
+      "description": "Office and retail space cleaning",
+      "options": "After-hours available to avoid disrupting your business"
+    },
+    {
+      "name": "Post-Construction Cleaning",
+      "price": "Custom quote based on scope",
+      "description": "Dust, debris, and construction residue removal after renovations or new builds"
+    }
+  ],
+  "addons": [
+    "Interior window cleaning",
+    "Upholstery wipe-down",
+    "Laundry and fold",
+    "Dish washing",
+    "Pet hair treatment",
+    "Air vent cleaning"
+  ],
+  "serviceArea": [
+    "Seattle",
+    "Bellevue",
+    "Kirkland",
+    "Redmond",
+    "Renton",
+    "Shoreline",
+    "Bothell",
+    "Burien",
+    "Tukwila",
+    "Mercer Island",
+    "All of Greater King County, WA"
+  ],
+  "faqs": [
+    {
+      "q": "Do you bring your own supplies?",
+      "a": "Yes, we bring all professional-grade cleaning products and equipment."
+    },
+    {
+      "q": "Are you insured?",
+      "a": "Yes, SLN Enterprise is fully insured and bonded in Washington State."
+    },
+    {
+      "q": "Do I need to be home during the cleaning?",
+      "a": "No, many of our clients give us a key or door code. We are fully insured so your home is in good hands."
+    },
+    {
+      "q": "What is your cancellation policy?",
+      "a": "We ask for 24-hour notice to cancel or reschedule without a fee."
+    },
+    {
+      "q": "How do I get a quote?",
+      "a": "You can chat with Alexis right here 24/7, fill out the quote form on our Contact page, or call us during business hours."
+    },
+    {
+      "q": "Do you offer recurring cleaning plans?",
+      "a": "Yes! We offer weekly, bi-weekly, and monthly plans with discounted rates for recurring clients."
+    },
+    {
+      "q": "How long does a cleaning take?",
+      "a": "Standard cleans typically take 2–3 hours depending on size. Deep cleans and move-out cleans can take 4–6 hours."
+    }
+  ],
+  "promotions": []
+}
