@@ -26,13 +26,44 @@ a{text-decoration:none;color:inherit}
 nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(8,8,8,.92);backdrop-filter:blur(16px);display:flex;align-items:center;justify-content:space-between;padding:0 6%;height:78px;border-bottom:1px solid var(--gb)}
 .nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:500;color:var(--cream);letter-spacing:.18em;text-transform:uppercase}
 .nav-logo span{color:var(--gold)}
-.nav-links{display:flex;gap:2.5rem;align-items:center}
+.nav-links{display:flex;gap:2.2rem;align-items:center}
 .nav-links a{font-size:.68rem;font-weight:400;color:var(--t2);letter-spacing:.2em;text-transform:uppercase;transition:color .2s}
 .nav-links a:hover,.nav-links a.active{color:var(--gold)}
 .nav-cta{border:1px solid var(--gb)!important;color:var(--gold)!important;padding:.5rem 1.3rem;font-size:.68rem!important;letter-spacing:.15em!important;transition:all .25s!important}
 .nav-cta:hover{background:var(--gold)!important;color:var(--dark)!important;border-color:var(--gold)!important}
 .hamburger{display:none;flex-direction:column;gap:6px;cursor:pointer;padding:4px}
 .hamburger span{display:block;width:22px;height:1px;background:var(--cream)}
+
+/* ── LANG SWITCHER ── */
+.lang-switch{position:relative}
+.lang-btn{
+  display:flex;align-items:center;gap:.4rem;
+  background:transparent;border:1px solid var(--gb);color:var(--t2);
+  font-family:'Inter',sans-serif;font-size:.68rem;letter-spacing:.1em;
+  padding:.5rem .85rem;cursor:pointer;transition:all .2s;
+}
+.lang-btn:hover{border-color:var(--gold);color:var(--gold)}
+.lang-btn .lg-caret{font-size:.6rem;transition:transform .2s}
+.lang-btn.open .lg-caret{transform:rotate(180deg)}
+.lang-menu{
+  position:absolute;top:calc(100% + 10px);right:0;
+  background:#0c0b0b;border:1px solid var(--gb);
+  min-width:200px;max-height:340px;overflow-y:auto;
+  box-shadow:0 20px 50px rgba(0,0,0,.5);
+  opacity:0;pointer-events:none;transform:translateY(-8px);
+  transition:opacity .2s,transform .2s;z-index:300;
+}
+.lang-menu.open{opacity:1;pointer-events:all;transform:translateY(0)}
+.lang-opt{
+  display:flex;align-items:center;gap:.7rem;
+  padding:.7rem 1rem;font-size:.78rem;color:var(--t2);
+  cursor:pointer;transition:background .15s,color .15s;
+  border-bottom:1px solid rgba(196,162,101,.08);
+}
+.lang-opt:last-child{border-bottom:none}
+.lang-opt:hover{background:var(--surf);color:var(--cream)}
+.lang-opt.active{color:var(--gold)}
+.lang-flag{font-size:1rem}
 
 .page-hero{background:var(--black);padding:160px 6% 100px;position:relative;overflow:hidden;border-bottom:1px solid var(--gb)}
 .page-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 70% 40%, rgba(196,162,101,.05) 0%, transparent 65%)}
@@ -151,6 +182,12 @@ footer{background:#050505;padding:5rem 6% 2.5rem;border-top:1px solid var(--gb)}
 .f-bottom-links a{color:var(--t3);transition:color .2s}
 .f-bottom-links a:hover{color:var(--gold)}
 
+/* ── RTL SUPPORT ── */
+html[dir="rtl"] .story-pull::before{left:auto;right:1rem}
+html[dir="rtl"] .why-item,html[dir="rtl"] .promise-item{flex-direction:row-reverse;text-align:right}
+html[dir="rtl"] .lang-menu{right:auto;left:0}
+html[dir="rtl"] .lang-opt{flex-direction:row-reverse}
+
 @media(max-width:1024px){.values-grid{grid-template-columns:1fr 1fr}.promise-grid{grid-template-columns:1fr;gap:3.5rem}.area-grid{grid-template-columns:1fr}.footer-top{grid-template-columns:1fr 1fr;gap:2.5rem}}
 @media(max-width:900px){.story-grid{grid-template-columns:1fr}.story-pull{border-right:none;border-bottom:1px solid var(--gb);min-height:320px}}
 @media(max-width:640px){nav{padding:0 4%}.nav-links{display:none}.nav-links.open{display:flex;flex-direction:column;position:absolute;top:78px;left:0;right:0;background:#080808;padding:1.75rem 4%;border-bottom:1px solid var(--gb);gap:1.5rem}.hamburger{display:flex}section{padding:5rem 4%}.page-hero{padding:130px 4% 70px}.story-pull,.story-text{padding:2.5rem}.values-grid{grid-template-columns:1fr}.certs-grid{grid-template-columns:1fr}.footer-top{grid-template-columns:1fr;gap:2rem}.footer-bottom{flex-direction:column;align-items:flex-start}}
@@ -161,21 +198,22 @@ footer{background:#050505;padding:5rem 6% 2.5rem;border-top:1px solid var(--gb)}
 <nav>
   <a href="index.html" class="nav-logo">SLN <span>Enterprise</span> LLC</a>
   <div class="nav-links" id="nav-links">
-    <a href="index.html">Home</a>
-    <a href="services.html">Services</a>
-    <a href="about.html" class="active">About</a>
-    <a href="contact.html">Contact</a>
-    <a href="contact.html" class="nav-cta">Request a Quote</a>
+    <a href="index.html" data-i18n="nav.home">Home</a>
+    <a href="services.html" data-i18n="nav.services">Services</a>
+    <a href="about.html" class="active" data-i18n="nav.about">About</a>
+    <a href="contact.html" data-i18n="nav.contact">Contact</a>
+    <a href="contact.html" class="nav-cta" data-i18n="nav.cta">Request a Quote</a>
+    <div class="lang-switch" id="lang-switch"></div>
   </div>
   <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
 </nav>
 
 <div class="page-hero">
   <div class="page-hero-inner">
-    <div class="breadcrumb"><a href="index.html">Home</a> &nbsp;/&nbsp; About</div>
-    <div class="kicker"><div class="kicker-line"></div><span class="kicker-text">Our Story</span></div>
-    <h1>Built on Trust.<br><em>Driven by Standards.</em></h1>
-    <p>SLN Enterprise LLC isn't just another cleaning company. We're a Seattle-based team that takes the work seriously — because the spaces people live and work in actually matter.</p>
+    <div class="breadcrumb"><a href="index.html" data-i18n="nav.home">Home</a> &nbsp;/&nbsp; <span data-i18n="nav.about">About</span></div>
+    <div class="kicker"><div class="kicker-line"></div><span class="kicker-text" data-i18n="about.kicker">Our Story</span></div>
+    <h1><span data-i18n="about.h1.line1">Built on Trust.</span><br><em data-i18n="about.h1.line2">Driven by Standards.</em></h1>
+    <p data-i18n="about.h1.desc">SLN Enterprise LLC isn't just another cleaning company. We're a Seattle-based team that takes the work seriously — because the spaces people live and work in actually matter.</p>
   </div>
 </div>
 
@@ -184,14 +222,14 @@ footer{background:#050505;padding:5rem 6% 2.5rem;border-top:1px solid var(--gb)}
   <div class="section-inner" style="max-width:none;padding:0">
     <div class="story-grid">
       <div class="story-pull">
-        <blockquote class="pull-quote">Every home we clean belongs to someone who works hard. That space deserves to be treated with real care.</blockquote>
-        <div class="pull-attr">SLN Enterprise LLC &nbsp;·&nbsp; Founded in Seattle, WA</div>
+        <blockquote class="pull-quote" data-i18n="about.pullquote">Every home we clean belongs to someone who works hard. That space deserves to be treated with real care.</blockquote>
+        <div class="pull-attr" data-i18n="about.pullattr">SLN Enterprise LLC &nbsp;·&nbsp; Founded in Seattle, WA</div>
       </div>
       <div class="story-text">
-        <h2>We Started Small.<br><em>We Stay Intentional.</em></h2>
-        <p>SLN Enterprise LLC was founded on a simple belief: professional cleaning shouldn't feel like a gamble. Too many people had hired services that showed up late, skipped corners, or sent different unfamiliar faces every time with no consistency or accountability.</p>
-        <p>We built something different. A team that shows up on time, follows a thorough process on every visit, and actually communicates clearly with clients. Not just a cleaning crew — a reliable partner for your home or business.</p>
-        <p>We've grown through word of mouth, one satisfied client at a time. And we plan to keep it that way — doing quality work, standing behind every clean, and treating every space we enter with the respect it deserves.</p>
+        <h2><span data-i18n="about.story.title1">We Started Small.</span><br><em data-i18n="about.story.title2">We Stay Intentional.</em></h2>
+        <p data-i18n="about.story.p1">SLN Enterprise LLC was founded on a simple belief: professional cleaning shouldn't feel like a gamble. Too many people had hired services that showed up late, skipped corners, or sent different unfamiliar faces every time with no consistency or accountability.</p>
+        <p data-i18n="about.story.p2">We built something different. A team that shows up on time, follows a thorough process on every visit, and actually communicates clearly with clients. Not just a cleaning crew — a reliable partner for your home or business.</p>
+        <p data-i18n="about.story.p3">We've grown through word of mouth, one satisfied client at a time. And we plan to keep it that way — doing quality work, standing behind every clean, and treating every space we enter with the respect it deserves.</p>
       </div>
     </div>
   </div>
@@ -200,28 +238,28 @@ footer{background:#050505;padding:5rem 6% 2.5rem;border-top:1px solid var(--gb)}
 <!-- VALUES -->
 <section class="values">
   <div class="section-inner">
-    <div class="kicker"><div class="kicker-line"></div><span class="kicker-text">What We Stand For</span></div>
-    <h2 class="sec-title">Our Core <em>Values</em></h2>
+    <div class="kicker"><div class="kicker-line"></div><span class="kicker-text" data-i18n="about.values.kicker">What We Stand For</span></div>
+    <h2 class="sec-title"><span data-i18n="about.values.title1">Our Core</span> <em data-i18n="about.values.title2">Values</em></h2>
     <div class="values-grid">
       <div class="val-card">
         <div class="val-num">01</div>
-        <h3>Trustworthiness</h3>
-        <p>You're inviting us into your home. Every team member is background-checked and trained before they ever step through a client's door.</p>
+        <h3 data-i18n="about.values.1.title">Trustworthiness</h3>
+        <p data-i18n="about.values.1.desc">You're inviting us into your home. Every team member is background-checked and trained before they ever step through a client's door.</p>
       </div>
       <div class="val-card">
         <div class="val-num">02</div>
-        <h3>Consistency</h3>
-        <p>We use the same detailed checklist on every visit. Whether it's your first clean or your fiftieth, the standard never changes.</p>
+        <h3 data-i18n="about.values.2.title">Consistency</h3>
+        <p data-i18n="about.values.2.desc">We use the same detailed checklist on every visit. Whether it's your first clean or your fiftieth, the standard never changes.</p>
       </div>
       <div class="val-card">
         <div class="val-num">03</div>
-        <h3>Responsibility</h3>
-        <p>We use eco-friendly, non-toxic products wherever possible — because clean shouldn't come at the cost of your health or the environment.</p>
+        <h3 data-i18n="about.values.3.title">Responsibility</h3>
+        <p data-i18n="about.values.3.desc">We use eco-friendly, non-toxic products wherever possible — because clean shouldn't come at the cost of your health or the environment.</p>
       </div>
       <div class="val-card">
         <div class="val-num">04</div>
-        <h3>Communication</h3>
-        <p>We respond fast, confirm appointments, and are easy to reach. Our AI assistant is available 24/7 so you're never left waiting.</p>
+        <h3 data-i18n="about.values.4.title">Communication</h3>
+        <p data-i18n="about.values.4.desc">We respond fast, confirm appointments, and are easy to reach. Our AI assistant is available 24/7 so you're never left waiting.</p>
       </div>
     </div>
   </div>
@@ -232,37 +270,37 @@ footer{background:#050505;padding:5rem 6% 2.5rem;border-top:1px solid var(--gb)}
   <div class="section-inner">
     <div class="promise-grid">
       <div class="promise-left">
-        <div class="kicker"><div class="kicker-line"></div><span class="kicker-text">Our Commitment</span></div>
-        <h2 class="sec-title">The SLN <em>Promise</em></h2>
-        <p>We're not just trying to show up and check boxes. We're trying to be the cleaning service you actually stick with — the one you tell your friends about.</p>
+        <div class="kicker"><div class="kicker-line"></div><span class="kicker-text" data-i18n="about.promise.kicker">Our Commitment</span></div>
+        <h2 class="sec-title"><span data-i18n="about.promise.title1">The SLN</span> <em data-i18n="about.promise.title2">Promise</em></h2>
+        <p data-i18n="about.promise.sub">We're not just trying to show up and check boxes. We're trying to be the cleaning service you actually stick with — the one you tell your friends about.</p>
         <ul class="promise-list">
-          <li class="promise-item"><div class="promise-dash"></div><p>If you're not satisfied, we return within 24 hours and make it right — no questions, no charge.</p></li>
-          <li class="promise-item"><div class="promise-dash"></div><p>We never send unchecked strangers to your home. Every team member is vetted and trained directly by us.</p></li>
-          <li class="promise-item"><div class="promise-dash"></div><p>Your pricing is locked in. No surprise fees, no bait-and-switch quotes after the first visit.</p></li>
-          <li class="promise-item"><div class="promise-dash"></div><p>Reschedule, adjust, or cancel with reasonable notice — no complicated hoops or penalties.</p></li>
-          <li class="promise-item"><div class="promise-dash"></div><p>We bring every supply and piece of equipment. You don't need to provide a single thing.</p></li>
+          <li class="promise-item"><div class="promise-dash"></div><p data-i18n="about.promise.1">If you're not satisfied, we return within 24 hours and make it right — no questions, no charge.</p></li>
+          <li class="promise-item"><div class="promise-dash"></div><p data-i18n="about.promise.2">We never send unchecked strangers to your home. Every team member is vetted and trained directly by us.</p></li>
+          <li class="promise-item"><div class="promise-dash"></div><p data-i18n="about.promise.3">Your pricing is locked in. No surprise fees, no bait-and-switch quotes after the first visit.</p></li>
+          <li class="promise-item"><div class="promise-dash"></div><p data-i18n="about.promise.4">Reschedule, adjust, or cancel with reasonable notice — no complicated hoops or penalties.</p></li>
+          <li class="promise-item"><div class="promise-dash"></div><p data-i18n="about.promise.5">We bring every supply and piece of equipment. You don't need to provide a single thing.</p></li>
         </ul>
       </div>
       <div class="certs-grid">
         <div class="cert-card">
           <div class="cert-icon">🛡️</div>
-          <h4>Fully Insured</h4>
-          <p>General liability coverage on every job</p>
+          <h4 data-i18n="about.certs.1.title">Fully Insured</h4>
+          <p data-i18n="about.certs.1.desc">General liability coverage on every job</p>
         </div>
         <div class="cert-card">
           <div class="cert-icon">🔒</div>
-          <h4>Bonded</h4>
-          <p>You're protected from the moment we arrive</p>
+          <h4 data-i18n="about.certs.2.title">Bonded</h4>
+          <p data-i18n="about.certs.2.desc">You're protected from the moment we arrive</p>
         </div>
         <div class="cert-card">
           <div class="cert-icon">✅</div>
-          <h4>Background Checked</h4>
-          <p>Every team member, verified before day one</p>
+          <h4 data-i18n="about.certs.3.title">Background Checked</h4>
+          <p data-i18n="about.certs.3.desc">Every team member, verified before day one</p>
         </div>
         <div class="cert-card">
           <div class="cert-icon">⭐</div>
-          <h4>Satisfaction Guarantee</h4>
-          <p>We return if you're not completely happy</p>
+          <h4 data-i18n="about.certs.4.title">Satisfaction Guarantee</h4>
+          <p data-i18n="about.certs.4.desc">We return if you're not completely happy</p>
         </div>
       </div>
     </div>
@@ -272,12 +310,12 @@ footer{background:#050505;padding:5rem 6% 2.5rem;border-top:1px solid var(--gb)}
 <!-- SERVICE AREA -->
 <section class="area">
   <div class="section-inner">
-    <div class="kicker"><div class="kicker-line"></div><span class="kicker-text">Where We Work</span></div>
-    <h2 class="sec-title">Serving Greater <em>Seattle</em></h2>
+    <div class="kicker"><div class="kicker-line"></div><span class="kicker-text" data-i18n="about.area.kicker">Where We Work</span></div>
+    <h2 class="sec-title"><span data-i18n="about.area.title1">Serving Greater</span> <em data-i18n="about.area.title2">Seattle</em></h2>
     <div class="area-grid">
       <div class="area-text">
-        <p>We're based in Seattle and serve residential and commercial clients across King County and surrounding areas. From Capitol Hill apartments to Bellevue office buildings — we're close by and ready.</p>
-        <p>Not sure if we cover your area? Reach out and ask. We're always looking to expand where we can serve clients well.</p>
+        <p data-i18n="about.area.p1">We're based in Seattle and serve residential and commercial clients across King County and surrounding areas. From Capitol Hill apartments to Bellevue office buildings — we're close by and ready.</p>
+        <p data-i18n="about.area.p2">Not sure if we cover your area? Reach out and ask. We're always looking to expand where we can serve clients well.</p>
         <div class="area-tags">
           <span class="area-tag">Seattle</span>
           <span class="area-tag">Bellevue</span>
@@ -293,7 +331,7 @@ footer{background:#050505;padding:5rem 6% 2.5rem;border-top:1px solid var(--gb)}
       </div>
       <div class="area-visual">
         <div class="area-pin">📍</div>
-        <div class="area-visual-label">Seattle & King County, WA</div>
+        <div class="area-visual-label" data-i18n="about.area.visual">Seattle & King County, WA</div>
       </div>
     </div>
   </div>
@@ -302,21 +340,21 @@ footer{background:#050505;padding:5rem 6% 2.5rem;border-top:1px solid var(--gb)}
 <!-- CTA -->
 <section class="cta-band">
   <div class="section-inner">
-    <h2>Ready to Work <em>With Us?</em></h2>
-    <p>Get a free, no-pressure quote for your home or business.</p>
-    <a href="contact.html" class="btn-gold">Get in Touch</a>
+    <h2><span data-i18n="about.cta.title1">Ready to Work</span> <em data-i18n="about.cta.title2">With Us?</em></h2>
+    <p data-i18n="about.cta.sub">Get a free, no-pressure quote for your home or business.</p>
+    <a href="contact.html" class="btn-gold" data-i18n="about.cta.btn">Get in Touch</a>
   </div>
 </section>
 
 <footer>
   <div class="footer-inner">
     <div class="footer-top">
-      <div><div class="f-logo">SLN <span>Enterprise</span> LLC</div><p class="f-about">Professional cleaning services for residential and commercial properties across Greater Seattle. Bonded, insured, and built on trust.</p></div>
-      <div class="f-col"><h5>Services</h5><a href="services.html">Residential Cleaning</a><a href="services.html">Deep Cleaning</a><a href="services.html">Move-In / Move-Out</a><a href="services.html">Commercial Cleaning</a><a href="services.html">Post-Construction</a></div>
-      <div class="f-col"><h5>Company</h5><a href="about.html">About Us</a><a href="services.html">Services</a><a href="contact.html">Contact</a><a href="contact.html">Get a Quote</a></div>
-      <div class="f-col"><h5>Contact</h5><p>📍 Seattle, WA</p><p>📞 (206) 555-0100</p><p>✉️ info@slnenterprisellc.online</p><p style="margin-top:.5rem;font-size:.75rem;line-height:1.8">Mon–Fri: 8am – 6pm<br>Sat: 9am – 4pm<br>Sun: By appointment</p></div>
+      <div><div class="f-logo">SLN <span>Enterprise</span> LLC</div><p class="f-about" data-i18n="footer.about">Professional cleaning services for residential and commercial properties across Greater Seattle. Bonded, insured, and built on trust.</p></div>
+      <div class="f-col"><h5 data-i18n="footer.services_heading">Services</h5><a href="services.html" data-i18n="svc.res.title">Residential Cleaning</a><a href="services.html" data-i18n="svc.deep.title">Deep Cleaning</a><a href="services.html" data-i18n="svc.move.title">Move-In / Move-Out</a><a href="services.html" data-i18n="svc.comm.title">Commercial Cleaning</a><a href="services.html" data-i18n="svc.postc.title">Post-Construction</a></div>
+      <div class="f-col"><h5 data-i18n="footer.company_heading">Company</h5><a href="about.html" data-i18n="footer.company.about">About Us</a><a href="services.html" data-i18n="footer.company.services">Services</a><a href="contact.html" data-i18n="footer.company.contact">Contact</a><a href="contact.html" data-i18n="footer.company.quote">Get a Quote</a></div>
+      <div class="f-col"><h5 data-i18n="footer.contact_heading">Contact</h5><p>📍 <span data-i18n="footer.location">Seattle, WA</span></p><p>📞 (206) 555-0100</p><p>✉️ info@slnenterprisellc.online</p><p style="margin-top:.5rem;font-size:.75rem;line-height:1.8" data-i18n="footer.hours">Mon–Fri: 8am – 6pm<br>Sat: 9am – 4pm<br>Sun: By appointment</p></div>
     </div>
-    <div class="footer-bottom"><span>© 2025 SLN Enterprise LLC. All rights reserved.</span><div class="f-bottom-links"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a><a href="contact.html">Contact</a></div></div>
+    <div class="footer-bottom"><span data-i18n="footer.copyright">© 2025 SLN Enterprise LLC. All rights reserved.</span><div class="f-bottom-links"><a href="#" data-i18n="footer.privacy">Privacy Policy</a><a href="#" data-i18n="footer.terms">Terms of Service</a><a href="contact.html" data-i18n="footer.company.contact">Contact</a></div></div>
   </div>
 </footer>
 
@@ -324,5 +362,6 @@ footer{background:#050505;padding:5rem 6% 2.5rem;border-top:1px solid var(--gb)}
 <div id="chat-panel"></div>
 <script>document.getElementById('hamburger').addEventListener('click',()=>document.getElementById('nav-links').classList.toggle('open'));</script>
 <script src="chat.js"></script>
+<script src="i18n.js"></script>
 </body>
 </html>

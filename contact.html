@@ -26,13 +26,44 @@ a{text-decoration:none;color:inherit}
 nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(8,8,8,.92);backdrop-filter:blur(16px);display:flex;align-items:center;justify-content:space-between;padding:0 6%;height:78px;border-bottom:1px solid var(--gb)}
 .nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:500;color:var(--cream);letter-spacing:.18em;text-transform:uppercase}
 .nav-logo span{color:var(--gold)}
-.nav-links{display:flex;gap:2.5rem;align-items:center}
+.nav-links{display:flex;gap:2.2rem;align-items:center}
 .nav-links a{font-size:.68rem;font-weight:400;color:var(--t2);letter-spacing:.2em;text-transform:uppercase;transition:color .2s}
 .nav-links a:hover,.nav-links a.active{color:var(--gold)}
 .nav-cta{border:1px solid var(--gb)!important;color:var(--gold)!important;padding:.5rem 1.3rem;font-size:.68rem!important;letter-spacing:.15em!important;transition:all .25s!important}
 .nav-cta:hover{background:var(--gold)!important;color:var(--dark)!important;border-color:var(--gold)!important}
 .hamburger{display:none;flex-direction:column;gap:6px;cursor:pointer;padding:4px}
 .hamburger span{display:block;width:22px;height:1px;background:var(--cream)}
+
+/* ── LANG SWITCHER ── */
+.lang-switch{position:relative}
+.lang-btn{
+  display:flex;align-items:center;gap:.4rem;
+  background:transparent;border:1px solid var(--gb);color:var(--t2);
+  font-family:'Inter',sans-serif;font-size:.68rem;letter-spacing:.1em;
+  padding:.5rem .85rem;cursor:pointer;transition:all .2s;
+}
+.lang-btn:hover{border-color:var(--gold);color:var(--gold)}
+.lang-btn .lg-caret{font-size:.6rem;transition:transform .2s}
+.lang-btn.open .lg-caret{transform:rotate(180deg)}
+.lang-menu{
+  position:absolute;top:calc(100% + 10px);right:0;
+  background:#0c0b0b;border:1px solid var(--gb);
+  min-width:200px;max-height:340px;overflow-y:auto;
+  box-shadow:0 20px 50px rgba(0,0,0,.5);
+  opacity:0;pointer-events:none;transform:translateY(-8px);
+  transition:opacity .2s,transform .2s;z-index:300;
+}
+.lang-menu.open{opacity:1;pointer-events:all;transform:translateY(0)}
+.lang-opt{
+  display:flex;align-items:center;gap:.7rem;
+  padding:.7rem 1rem;font-size:.78rem;color:var(--t2);
+  cursor:pointer;transition:background .15s,color .15s;
+  border-bottom:1px solid rgba(196,162,101,.08);
+}
+.lang-opt:last-child{border-bottom:none}
+.lang-opt:hover{background:var(--surf);color:var(--cream)}
+.lang-opt.active{color:var(--gold)}
+.lang-flag{font-size:1rem}
 
 .page-hero{background:var(--black);padding:160px 6% 100px;position:relative;overflow:hidden;border-bottom:1px solid var(--gb)}
 .page-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 60% 40%, rgba(196,162,101,.05) 0%, transparent 65%)}
@@ -170,6 +201,14 @@ footer{background:#050505;padding:5rem 6% 2.5rem;border-top:1px solid var(--gb)}
 .f-bottom-links a{color:var(--t3);transition:color .2s}
 .f-bottom-links a:hover{color:var(--gold)}
 
+/* ── RTL SUPPORT ── */
+html[dir="rtl"] .info-item{flex-direction:row-reverse;text-align:right}
+html[dir="rtl"] .hours-row{flex-direction:row-reverse}
+html[dir="rtl"] .promise-item{flex-direction:row-reverse}
+html[dir="rtl"] .lang-menu{right:auto;left:0}
+html[dir="rtl"] .lang-opt{flex-direction:row-reverse}
+html[dir="rtl"] .fg select{background-position:left .75rem center}
+
 @media(max-width:960px){.contact-inner{grid-template-columns:1fr;gap:3.5rem}.contact-info{position:static}.contact-bottom-inner{grid-template-columns:1fr}.footer-top{grid-template-columns:1fr 1fr;gap:2.5rem}}
 @media(max-width:640px){nav{padding:0 4%}.nav-links{display:none}.nav-links.open{display:flex;flex-direction:column;position:absolute;top:78px;left:0;right:0;background:#080808;padding:1.75rem 4%;border-bottom:1px solid var(--gb);gap:1.5rem}.hamburger{display:flex}.contact-main{padding:5rem 4%}.page-hero{padding:130px 4% 70px}.form-grid{grid-template-columns:1fr}.fg.full{grid-column:1}.service-opts{grid-template-columns:1fr}.form-body{padding:1.5rem}.form-wrap-head{padding:1.5rem}.footer-top{grid-template-columns:1fr;gap:2rem}.footer-bottom{flex-direction:column;align-items:flex-start}}
 </style>
@@ -179,21 +218,22 @@ footer{background:#050505;padding:5rem 6% 2.5rem;border-top:1px solid var(--gb)}
 <nav>
   <a href="index.html" class="nav-logo">SLN <span>Enterprise</span> LLC</a>
   <div class="nav-links" id="nav-links">
-    <a href="index.html">Home</a>
-    <a href="services.html">Services</a>
-    <a href="about.html">About</a>
-    <a href="contact.html" class="active">Contact</a>
-    <a href="contact.html" class="nav-cta">Request a Quote</a>
+    <a href="index.html" data-i18n="nav.home">Home</a>
+    <a href="services.html" data-i18n="nav.services">Services</a>
+    <a href="about.html" data-i18n="nav.about">About</a>
+    <a href="contact.html" class="active" data-i18n="nav.contact">Contact</a>
+    <a href="contact.html" class="nav-cta" data-i18n="nav.cta">Request a Quote</a>
+    <div class="lang-switch" id="lang-switch"></div>
   </div>
   <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
 </nav>
 
 <div class="page-hero">
   <div class="page-hero-inner">
-    <div class="breadcrumb"><a href="index.html">Home</a> &nbsp;/&nbsp; Contact</div>
-    <div class="kicker"><div class="kicker-line"></div><span class="kicker-text">Get in Touch</span></div>
-    <h1>Let's Get Your<br><em>Space Sorted.</em></h1>
-    <p>Fill out the form and we'll get back to you with a custom quote. Or open the chat — our AI assistant is on right now, even at 3am.</p>
+    <div class="breadcrumb"><a href="index.html" data-i18n="nav.home">Home</a> &nbsp;/&nbsp; <span data-i18n="nav.contact">Contact</span></div>
+    <div class="kicker"><div class="kicker-line"></div><span class="kicker-text" data-i18n="contact.kicker">Get in Touch</span></div>
+    <h1><span data-i18n="contact.h1.line1">Let's Get Your</span><br><em data-i18n="contact.h1.line2">Space Sorted.</em></h1>
+    <p data-i18n="contact.h1.desc">Fill out the form and we'll get back to you with a custom quote. Or open the chat — our AI assistant is on right now, even at 3am.</p>
   </div>
 </div>
 
@@ -202,37 +242,37 @@ footer{background:#050505;padding:5rem 6% 2.5rem;border-top:1px solid var(--gb)}
 
     <!-- INFO -->
     <div class="contact-info">
-      <div class="info-label-head">Contact Details</div>
-      <h2>We'd Love to<br><em>Hear From You</em></h2>
-      <p>Reach out any way that's easiest — form, phone, email, or chat.</p>
+      <div class="info-label-head" data-i18n="contact.info.label">Contact Details</div>
+      <h2><span data-i18n="contact.info.title1">We'd Love to</span><br><em data-i18n="contact.info.title2">Hear From You</em></h2>
+      <p data-i18n="contact.info.sub">Reach out any way that's easiest — form, phone, email, or chat.</p>
       <div class="info-items">
         <div class="info-item">
           <div class="info-item-icon">📞</div>
           <div>
-            <div class="info-item-label">Phone</div>
+            <div class="info-item-label" data-i18n="contact.info.phone_label">Phone</div>
             <div class="info-item-val"><a href="tel:+12065550100">(206) 555-0100</a></div>
           </div>
         </div>
         <div class="info-item">
           <div class="info-item-icon">✉️</div>
           <div>
-            <div class="info-item-label">Email</div>
+            <div class="info-item-label" data-i18n="contact.info.email_label">Email</div>
             <div class="info-item-val"><a href="mailto:info@slnenterprisellc.online">info@slnenterprisellc.online</a></div>
           </div>
         </div>
         <div class="info-item">
           <div class="info-item-icon">📍</div>
           <div>
-            <div class="info-item-label">Service Area</div>
-            <div class="info-item-val">Seattle & Greater King County, WA</div>
+            <div class="info-item-label" data-i18n="contact.info.area_label">Service Area</div>
+            <div class="info-item-val" data-i18n="contact.info.area_val">Seattle & Greater King County, WA</div>
           </div>
         </div>
       </div>
       <div class="hours-block">
-        <div class="hours-head">Business Hours</div>
-        <div class="hours-row"><span class="hours-day">Monday – Friday</span><span class="hours-time">8:00am – 6:00pm</span></div>
-        <div class="hours-row"><span class="hours-day">Saturday</span><span class="hours-time">9:00am – 4:00pm</span></div>
-        <div class="hours-row"><span class="hours-day">Sunday</span><span class="hours-time">By Appointment</span></div>
+        <div class="hours-head" data-i18n="contact.hours.heading">Business Hours</div>
+        <div class="hours-row"><span class="hours-day" data-i18n="contact.hours.weekday">Monday – Friday</span><span class="hours-time">8:00am – 6:00pm</span></div>
+        <div class="hours-row"><span class="hours-day" data-i18n="contact.hours.saturday">Saturday</span><span class="hours-time">9:00am – 4:00pm</span></div>
+        <div class="hours-row"><span class="hours-day" data-i18n="contact.hours.sunday">Sunday</span><span class="hours-time" data-i18n="contact.hours.by_appt">By Appointment</span></div>
       </div>
     </div>
 
@@ -240,68 +280,68 @@ footer{background:#050505;padding:5rem 6% 2.5rem;border-top:1px solid var(--gb)}
     <div class="form-wrap">
       <div id="form-view">
         <div class="form-wrap-head">
-          <h3>Request a <em>Free Quote</em></h3>
-          <p>We'll get back to you within 24 hours with a custom estimate.</p>
+          <h3><span data-i18n="contact.form.title1">Request a</span> <em data-i18n="contact.form.title2">Free Quote</em></h3>
+          <p data-i18n="contact.form.sub">We'll get back to you within 24 hours with a custom estimate.</p>
         </div>
         <div class="form-body">
           <form id="quote-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
 
-            <div class="form-section-label">Your Information</div>
+            <div class="form-section-label" data-i18n="contact.form.section1">Your Information</div>
             <div class="form-grid">
-              <div class="fg"><label>First Name *</label><input type="text" name="first_name" placeholder="Jane" required></div>
-              <div class="fg"><label>Last Name *</label><input type="text" name="last_name" placeholder="Smith" required></div>
-              <div class="fg"><label>Email Address *</label><input type="email" name="email" placeholder="jane@example.com" required></div>
-              <div class="fg"><label>Phone Number</label><input type="tel" name="phone" placeholder="(206) 555-0100"></div>
-              <div class="fg full"><label>Property Address or Neighborhood</label><input type="text" name="address" placeholder="Capitol Hill, Seattle — or full address"></div>
+              <div class="fg"><label data-i18n="contact.form.first_name">First Name *</label><input type="text" name="first_name" placeholder="Jane" required></div>
+              <div class="fg"><label data-i18n="contact.form.last_name">Last Name *</label><input type="text" name="last_name" placeholder="Smith" required></div>
+              <div class="fg"><label data-i18n="contact.form.email">Email Address *</label><input type="email" name="email" placeholder="jane@example.com" required></div>
+              <div class="fg"><label data-i18n="contact.form.phone">Phone Number</label><input type="tel" name="phone" placeholder="(206) 555-0100"></div>
+              <div class="fg full"><label data-i18n="contact.form.address">Property Address or Neighborhood</label><input type="text" name="address" data-i18n-placeholder="contact.form.address_ph" placeholder="Capitol Hill, Seattle — or full address"></div>
             </div>
 
-            <div class="form-section-label">Service Details</div>
+            <div class="form-section-label" data-i18n="contact.form.section2">Service Details</div>
             <div class="fg full" style="margin-bottom:.85rem">
-              <label>What type of cleaning do you need?</label>
+              <label data-i18n="contact.form.service_q">What type of cleaning do you need?</label>
               <div class="service-opts">
-                <div class="sopt"><input type="radio" id="s1" name="service" value="Standard Cleaning"><label for="s1">Standard Cleaning</label></div>
-                <div class="sopt"><input type="radio" id="s2" name="service" value="Deep Cleaning"><label for="s2">Deep Cleaning</label></div>
-                <div class="sopt"><input type="radio" id="s3" name="service" value="Move-In / Move-Out"><label for="s3">Move-In / Move-Out</label></div>
-                <div class="sopt"><input type="radio" id="s4" name="service" value="Commercial Cleaning"><label for="s4">Commercial Cleaning</label></div>
-                <div class="sopt"><input type="radio" id="s5" name="service" value="Post-Construction"><label for="s5">Post-Construction</label></div>
-                <div class="sopt"><input type="radio" id="s6" name="service" value="Not Sure"><label for="s6">Not Sure Yet</label></div>
+                <div class="sopt"><input type="radio" id="s1" name="service" value="Standard Cleaning"><label for="s1" data-i18n="contact.form.opt_standard">Standard Cleaning</label></div>
+                <div class="sopt"><input type="radio" id="s2" name="service" value="Deep Cleaning"><label for="s2" data-i18n="svc.deep.title">Deep Cleaning</label></div>
+                <div class="sopt"><input type="radio" id="s3" name="service" value="Move-In / Move-Out"><label for="s3" data-i18n="svc.move.title">Move-In / Move-Out</label></div>
+                <div class="sopt"><input type="radio" id="s4" name="service" value="Commercial Cleaning"><label for="s4" data-i18n="svc.comm.title">Commercial Cleaning</label></div>
+                <div class="sopt"><input type="radio" id="s5" name="service" value="Post-Construction"><label for="s5" data-i18n="svc.postc.title">Post-Construction</label></div>
+                <div class="sopt"><input type="radio" id="s6" name="service" value="Not Sure"><label for="s6" data-i18n="contact.form.opt_notsure">Not Sure Yet</label></div>
               </div>
             </div>
             <div class="form-grid">
               <div class="fg">
-                <label>Approx. Square Footage</label>
+                <label data-i18n="contact.form.sqft">Approx. Square Footage</label>
                 <select name="sqft">
-                  <option value="">Select range…</option>
-                  <option>Under 800 sq ft</option>
-                  <option>800 – 1,200 sq ft</option>
-                  <option>1,200 – 2,000 sq ft</option>
-                  <option>2,000 – 3,000 sq ft</option>
-                  <option>3,000+ sq ft</option>
+                  <option value="" data-i18n="contact.form.select_range">Select range…</option>
+                  <option data-i18n="contact.form.sqft1">Under 800 sq ft</option>
+                  <option data-i18n="contact.form.sqft2">800 – 1,200 sq ft</option>
+                  <option data-i18n="contact.form.sqft3">1,200 – 2,000 sq ft</option>
+                  <option data-i18n="contact.form.sqft4">2,000 – 3,000 sq ft</option>
+                  <option data-i18n="contact.form.sqft5">3,000+ sq ft</option>
                 </select>
               </div>
               <div class="fg">
-                <label>Frequency</label>
+                <label data-i18n="contact.form.frequency">Frequency</label>
                 <select name="frequency">
-                  <option value="">Select…</option>
-                  <option>One-time</option>
-                  <option>Weekly</option>
-                  <option>Bi-weekly</option>
-                  <option>Monthly</option>
-                  <option>Custom schedule</option>
+                  <option value="" data-i18n="contact.form.select">Select…</option>
+                  <option data-i18n="contact.form.freq1">One-time</option>
+                  <option data-i18n="contact.form.freq2">Weekly</option>
+                  <option data-i18n="contact.form.freq3">Bi-weekly</option>
+                  <option data-i18n="contact.form.freq4">Monthly</option>
+                  <option data-i18n="contact.form.freq5">Custom schedule</option>
                 </select>
               </div>
-              <div class="fg full"><label>Anything else we should know?</label><textarea name="message" placeholder="Pets, specific concerns, preferred dates, add-ons you'd like…"></textarea></div>
+              <div class="fg full"><label data-i18n="contact.form.notes">Anything else we should know?</label><textarea name="message" data-i18n-placeholder="contact.form.notes_ph" placeholder="Pets, specific concerns, preferred dates, add-ons you'd like…"></textarea></div>
             </div>
 
-            <button type="submit" class="form-submit">Send My Quote Request</button>
-            <p class="form-note">No spam. No obligations. Just a friendly quote within 24 hours.</p>
+            <button type="submit" class="form-submit" data-i18n="contact.form.submit">Send My Quote Request</button>
+            <p class="form-note" data-i18n="contact.form.note">No spam. No obligations. Just a friendly quote within 24 hours.</p>
           </form>
         </div>
       </div>
       <div class="form-success" id="form-success">
         <div class="success-icon">✦</div>
-        <h3>Request Received</h3>
-        <p>Thank you for reaching out to SLN Enterprise LLC. We'll review your request and get back to you within 24 hours with a custom quote.<br><br>In the meantime, call us at <strong style="color:var(--gold)">(206) 555-0100</strong> or chat with Alexis — our AI assistant is available right now.</p>
+        <h3 data-i18n="contact.success.title">Request Received</h3>
+        <p data-i18n="contact.success.body">Thank you for reaching out to SLN Enterprise LLC. We'll review your request and get back to you within 24 hours with a custom quote.<br><br>In the meantime, call us at <strong style="color:var(--gold)">(206) 555-0100</strong> or chat with Alexis — our AI assistant is available right now.</p>
       </div>
     </div>
 
@@ -313,18 +353,18 @@ footer{background:#050505;padding:5rem 6% 2.5rem;border-top:1px solid var(--gb)}
   <div class="contact-bottom-inner">
     <div class="bottom-card">
       <div class="bottom-icon">⚡</div>
-      <h4>Fast Response</h4>
-      <p>We respond to every quote request within 24 hours — usually much sooner. Chat with Alexis right now for an instant answer.</p>
+      <h4 data-i18n="contact.bottom.1.title">Fast Response</h4>
+      <p data-i18n="contact.bottom.1.desc">We respond to every quote request within 24 hours — usually much sooner. Chat with Alexis right now for an instant answer.</p>
     </div>
     <div class="bottom-card">
       <div class="bottom-icon">💰</div>
-      <h4>Transparent Pricing</h4>
-      <p>No hidden fees. What we quote is what you pay. We'll be upfront with you from the very first conversation.</p>
+      <h4 data-i18n="contact.bottom.2.title">Transparent Pricing</h4>
+      <p data-i18n="contact.bottom.2.desc">No hidden fees. What we quote is what you pay. We'll be upfront with you from the very first conversation.</p>
     </div>
     <div class="bottom-card">
       <div class="bottom-icon">🔄</div>
-      <h4>Flexible Scheduling</h4>
-      <p>We work around your life — mornings, afternoons, weekends. We'll find a time that actually works for you.</p>
+      <h4 data-i18n="contact.bottom.3.title">Flexible Scheduling</h4>
+      <p data-i18n="contact.bottom.3.desc">We work around your life — mornings, afternoons, weekends. We'll find a time that actually works for you.</p>
     </div>
   </div>
 </div>
@@ -332,12 +372,12 @@ footer{background:#050505;padding:5rem 6% 2.5rem;border-top:1px solid var(--gb)}
 <footer>
   <div class="footer-inner">
     <div class="footer-top">
-      <div><div class="f-logo">SLN <span>Enterprise</span> LLC</div><p class="f-about">Professional cleaning services for residential and commercial properties across Greater Seattle. Bonded, insured, and built on trust.</p></div>
-      <div class="f-col"><h5>Services</h5><a href="services.html">Residential Cleaning</a><a href="services.html">Deep Cleaning</a><a href="services.html">Move-In / Move-Out</a><a href="services.html">Commercial Cleaning</a><a href="services.html">Post-Construction</a></div>
-      <div class="f-col"><h5>Company</h5><a href="about.html">About Us</a><a href="services.html">Services</a><a href="contact.html">Contact</a><a href="contact.html">Get a Quote</a></div>
-      <div class="f-col"><h5>Contact</h5><p>📍 Seattle, WA</p><p>📞 (206) 555-0100</p><p>✉️ info@slnenterprisellc.online</p><p style="margin-top:.5rem;font-size:.75rem;line-height:1.8">Mon–Fri: 8am – 6pm<br>Sat: 9am – 4pm<br>Sun: By appointment</p></div>
+      <div><div class="f-logo">SLN <span>Enterprise</span> LLC</div><p class="f-about" data-i18n="footer.about">Professional cleaning services for residential and commercial properties across Greater Seattle. Bonded, insured, and built on trust.</p></div>
+      <div class="f-col"><h5 data-i18n="footer.services_heading">Services</h5><a href="services.html" data-i18n="svc.res.title">Residential Cleaning</a><a href="services.html" data-i18n="svc.deep.title">Deep Cleaning</a><a href="services.html" data-i18n="svc.move.title">Move-In / Move-Out</a><a href="services.html" data-i18n="svc.comm.title">Commercial Cleaning</a><a href="services.html" data-i18n="svc.postc.title">Post-Construction</a></div>
+      <div class="f-col"><h5 data-i18n="footer.company_heading">Company</h5><a href="about.html" data-i18n="footer.company.about">About Us</a><a href="services.html" data-i18n="footer.company.services">Services</a><a href="contact.html" data-i18n="footer.company.contact">Contact</a><a href="contact.html" data-i18n="footer.company.quote">Get a Quote</a></div>
+      <div class="f-col"><h5 data-i18n="footer.contact_heading">Contact</h5><p>📍 <span data-i18n="footer.location">Seattle, WA</span></p><p>📞 (206) 555-0100</p><p>✉️ info@slnenterprisellc.online</p><p style="margin-top:.5rem;font-size:.75rem;line-height:1.8" data-i18n="footer.hours">Mon–Fri: 8am – 6pm<br>Sat: 9am – 4pm<br>Sun: By appointment</p></div>
     </div>
-    <div class="footer-bottom"><span>© 2025 SLN Enterprise LLC. All rights reserved.</span><div class="f-bottom-links"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a><a href="contact.html">Contact</a></div></div>
+    <div class="footer-bottom"><span data-i18n="footer.copyright">© 2025 SLN Enterprise LLC. All rights reserved.</span><div class="f-bottom-links"><a href="#" data-i18n="footer.privacy">Privacy Policy</a><a href="#" data-i18n="footer.terms">Terms of Service</a><a href="contact.html" data-i18n="footer.company.contact">Contact</a></div></div>
   </div>
 </footer>
 
@@ -353,5 +393,6 @@ document.getElementById('quote-form').addEventListener('submit',function(){
 });
 </script>
 <script src="chat.js"></script>
+<script src="i18n.js"></script>
 </body>
 </html>

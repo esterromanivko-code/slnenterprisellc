@@ -31,13 +31,44 @@ nav{
 }
 .nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:500;color:var(--cream);letter-spacing:.18em;text-transform:uppercase}
 .nav-logo span{color:var(--gold)}
-.nav-links{display:flex;gap:2.5rem;align-items:center}
+.nav-links{display:flex;gap:2.2rem;align-items:center}
 .nav-links a{font-size:.68rem;font-weight:400;color:var(--t2);letter-spacing:.2em;text-transform:uppercase;transition:color .2s}
 .nav-links a:hover,.nav-links a.active{color:var(--gold)}
 .nav-cta{border:1px solid var(--gb)!important;color:var(--gold)!important;padding:.5rem 1.3rem;font-size:.68rem!important;letter-spacing:.15em!important;transition:all .25s!important}
 .nav-cta:hover{background:var(--gold)!important;color:var(--dark)!important;border-color:var(--gold)!important}
 .hamburger{display:none;flex-direction:column;gap:6px;cursor:pointer;padding:4px}
 .hamburger span{display:block;width:22px;height:1px;background:var(--cream)}
+
+/* ── LANG SWITCHER ── */
+.lang-switch{position:relative}
+.lang-btn{
+  display:flex;align-items:center;gap:.4rem;
+  background:transparent;border:1px solid var(--gb);color:var(--t2);
+  font-family:'Inter',sans-serif;font-size:.68rem;letter-spacing:.1em;
+  padding:.5rem .85rem;cursor:pointer;transition:all .2s;
+}
+.lang-btn:hover{border-color:var(--gold);color:var(--gold)}
+.lang-btn .lg-caret{font-size:.6rem;transition:transform .2s}
+.lang-btn.open .lg-caret{transform:rotate(180deg)}
+.lang-menu{
+  position:absolute;top:calc(100% + 10px);right:0;
+  background:#0c0b0b;border:1px solid var(--gb);
+  min-width:200px;max-height:340px;overflow-y:auto;
+  box-shadow:0 20px 50px rgba(0,0,0,.5);
+  opacity:0;pointer-events:none;transform:translateY(-8px);
+  transition:opacity .2s,transform .2s;z-index:300;
+}
+.lang-menu.open{opacity:1;pointer-events:all;transform:translateY(0)}
+.lang-opt{
+  display:flex;align-items:center;gap:.7rem;
+  padding:.7rem 1rem;font-size:.78rem;color:var(--t2);
+  cursor:pointer;transition:background .15s,color .15s;
+  border-bottom:1px solid rgba(196,162,101,.08);
+}
+.lang-opt:last-child{border-bottom:none}
+.lang-opt:hover{background:var(--surf);color:var(--cream)}
+.lang-opt.active{color:var(--gold)}
+.lang-flag{font-size:1rem}
 
 /* PAGE HERO */
 .page-hero{
@@ -200,6 +231,16 @@ footer{background:#050505;padding:5rem 6% 2.5rem;border-top:1px solid var(--gb)}
 .f-bottom-links a{color:var(--t3);transition:color .2s}
 .f-bottom-links a:hover{color:var(--gold)}
 
+/* ── RTL SUPPORT ── */
+html[dir="rtl"] .includes li{flex-direction:row-reverse;text-align:right}
+html[dir="rtl"] .btn-ghost-sm{flex-direction:row-reverse;margin-left:0;margin-right:1.5rem}
+html[dir="rtl"] .faq-q{flex-direction:row-reverse}
+html[dir="rtl"] .addon-cell{flex-direction:row-reverse;text-align:right}
+html[dir="rtl"] .svc-block.flip .svc-visual{order:1}
+html[dir="rtl"] .svc-block.flip .svc-content{order:2}
+html[dir="rtl"] .lang-menu{right:auto;left:0}
+html[dir="rtl"] .lang-opt{flex-direction:row-reverse}
+
 @media(max-width:900px){
   .svc-block{grid-template-columns:1fr}
   .svc-visual{min-height:220px;border-right:none!important;border-left:none!important;border-bottom:1px solid var(--gb)}
@@ -230,21 +271,22 @@ footer{background:#050505;padding:5rem 6% 2.5rem;border-top:1px solid var(--gb)}
 <nav>
   <a href="index.html" class="nav-logo">SLN <span>Enterprise</span> LLC</a>
   <div class="nav-links" id="nav-links">
-    <a href="index.html">Home</a>
-    <a href="services.html" class="active">Services</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
-    <a href="contact.html" class="nav-cta">Request a Quote</a>
+    <a href="index.html" data-i18n="nav.home">Home</a>
+    <a href="services.html" class="active" data-i18n="nav.services">Services</a>
+    <a href="about.html" data-i18n="nav.about">About</a>
+    <a href="contact.html" data-i18n="nav.contact">Contact</a>
+    <a href="contact.html" class="nav-cta" data-i18n="nav.cta">Request a Quote</a>
+    <div class="lang-switch" id="lang-switch"></div>
   </div>
   <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
 </nav>
 
 <div class="page-hero">
   <div class="page-hero-inner">
-    <div class="breadcrumb"><a href="index.html">Home</a> &nbsp;/&nbsp; Services</div>
-    <div class="kicker"><div class="kicker-line"></div><span class="kicker-text">What We Offer</span></div>
-    <h1>Every Service,<br><em>Done Right.</em></h1>
-    <p>From weekly residential maintenance to full commercial contracts — we deliver the same high standard on every job, every time.</p>
+    <div class="breadcrumb"><a href="index.html" data-i18n="nav.home">Home</a> &nbsp;/&nbsp; <span data-i18n="nav.services">Services</span></div>
+    <div class="kicker"><div class="kicker-line"></div><span class="kicker-text" data-i18n="services.kicker">What We Offer</span></div>
+    <h1><span data-i18n="services.h1.line1">Every Service,</span><br><em data-i18n="services.h1.line2">Done Right.</em></h1>
+    <p data-i18n="services.h1.desc">From weekly residential maintenance to full commercial contracts — we deliver the same high standard on every job, every time.</p>
   </div>
 </div>
 
@@ -256,23 +298,23 @@ footer{background:#050505;padding:5rem 6% 2.5rem;border-top:1px solid var(--gb)}
       <div class="svc-visual" style="background-image:url('https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=1200&q=80')">
         <div class="svc-big-num">01</div>
         <div class="svc-icon-wrap">🏠</div>
-        <span class="svc-visual-label">Standard Clean</span>
+        <span class="svc-visual-label" data-i18n="services.01.label">Standard Clean</span>
       </div>
       <div class="svc-content">
-        <div class="svc-num-label">Service No. 01</div>
-        <h2>Residential Cleaning</h2>
-        <p>Reliable, recurring upkeep that keeps your home in top shape without you lifting a finger. We adapt to your schedule — weekly, bi-weekly, or monthly.</p>
+        <div class="svc-num-label" data-i18n="services.01.num">Service No. 01</div>
+        <h2 data-i18n="svc.res.title">Residential Cleaning</h2>
+        <p data-i18n="services.01.desc">Reliable, recurring upkeep that keeps your home in top shape without you lifting a finger. We adapt to your schedule — weekly, bi-weekly, or monthly.</p>
         <ul class="includes">
-          <li>All bedrooms, living areas & hallways</li>
-          <li>Kitchen surfaces, sink & appliance exteriors</li>
-          <li>Full bathroom scrub — toilet, tub, sink, mirrors</li>
-          <li>Vacuuming, sweeping & mopping all floors</li>
-          <li>Trash removal & optional linen change</li>
+          <li data-i18n="services.01.inc1">All bedrooms, living areas & hallways</li>
+          <li data-i18n="services.01.inc2">Kitchen surfaces, sink & appliance exteriors</li>
+          <li data-i18n="services.01.inc3">Full bathroom scrub — toilet, tub, sink, mirrors</li>
+          <li data-i18n="services.01.inc4">Vacuuming, sweeping & mopping all floors</li>
+          <li data-i18n="services.01.inc5">Trash removal & optional linen change</li>
         </ul>
-        <div class="price-pill"><span class="price-from">Starting at</span><span class="price-val">$120 / visit</span></div>
+        <div class="price-pill"><span class="price-from" data-i18n="services.price_from">Starting at</span><span class="price-val">$120 <span data-i18n="services.per_visit">/ visit</span></span></div>
         <div>
-          <a href="contact.html" class="btn-gold">Book This Service</a>
-          <a href="contact.html" class="btn-ghost-sm"><span class="ghost-line"></span> Get a Custom Quote</a>
+          <a href="contact.html" class="btn-gold" data-i18n="services.book">Book This Service</a>
+          <a href="contact.html" class="btn-ghost-sm"><span class="ghost-line"></span> <span data-i18n="services.custom_quote">Get a Custom Quote</span></a>
         </div>
       </div>
     </div>
@@ -281,24 +323,24 @@ footer{background:#050505;padding:5rem 6% 2.5rem;border-top:1px solid var(--gb)}
       <div class="svc-visual" style="background-image:url('https://images.unsplash.com/photo-1604709177225-055f99402ea3?auto=format&fit=crop&w=1200&q=80')">
         <div class="svc-big-num">02</div>
         <div class="svc-icon-wrap">🔬</div>
-        <span class="svc-visual-label">Deep Clean</span>
+        <span class="svc-visual-label" data-i18n="services.02.label">Deep Clean</span>
       </div>
       <div class="svc-content">
-        <div class="svc-num-label">Service No. 02</div>
-        <h2>Deep Cleaning</h2>
-        <p>When your space needs more than maintenance. A deep clean goes everywhere the regular visit doesn't — inside cabinets, behind appliances, into every corner and crevice.</p>
+        <div class="svc-num-label" data-i18n="services.02.num">Service No. 02</div>
+        <h2 data-i18n="svc.deep.title">Deep Cleaning</h2>
+        <p data-i18n="services.02.desc">When your space needs more than maintenance. A deep clean goes everywhere the regular visit doesn't — inside cabinets, behind appliances, into every corner and crevice.</p>
         <ul class="includes">
-          <li>Everything in our Standard Clean, plus:</li>
-          <li>Inside oven, microwave & refrigerator</li>
-          <li>Cabinet interiors, drawer tracks & pantry</li>
-          <li>Baseboards, window sills & door frames</li>
-          <li>Light fixtures, ceiling fans & vents</li>
-          <li>Grout scrubbing & tile detailing</li>
+          <li data-i18n="services.02.inc1">Everything in our Standard Clean, plus:</li>
+          <li data-i18n="services.02.inc2">Inside oven, microwave & refrigerator</li>
+          <li data-i18n="services.02.inc3">Cabinet interiors, drawer tracks & pantry</li>
+          <li data-i18n="services.02.inc4">Baseboards, window sills & door frames</li>
+          <li data-i18n="services.02.inc5">Light fixtures, ceiling fans & vents</li>
+          <li data-i18n="services.02.inc6">Grout scrubbing & tile detailing</li>
         </ul>
-        <div class="price-pill"><span class="price-from">Starting at</span><span class="price-val">$220 / visit</span></div>
+        <div class="price-pill"><span class="price-from" data-i18n="services.price_from">Starting at</span><span class="price-val">$220 <span data-i18n="services.per_visit">/ visit</span></span></div>
         <div>
-          <a href="contact.html" class="btn-gold">Book This Service</a>
-          <a href="contact.html" class="btn-ghost-sm"><span class="ghost-line"></span> Get a Custom Quote</a>
+          <a href="contact.html" class="btn-gold" data-i18n="services.book">Book This Service</a>
+          <a href="contact.html" class="btn-ghost-sm"><span class="ghost-line"></span> <span data-i18n="services.custom_quote">Get a Custom Quote</span></a>
         </div>
       </div>
     </div>
@@ -307,24 +349,24 @@ footer{background:#050505;padding:5rem 6% 2.5rem;border-top:1px solid var(--gb)}
       <div class="svc-visual" style="background-image:url('https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=1200&q=80')">
         <div class="svc-big-num">03</div>
         <div class="svc-icon-wrap">📦</div>
-        <span class="svc-visual-label">Move-In / Out</span>
+        <span class="svc-visual-label" data-i18n="services.03.label">Move-In / Out</span>
       </div>
       <div class="svc-content">
-        <div class="svc-num-label">Service No. 03</div>
-        <h2>Move-In / Move-Out</h2>
-        <p>Moving is stressful enough. We handle the clean so you can focus on the boxes. Deposit-return focused — we leave the space spotless and documented.</p>
+        <div class="svc-num-label" data-i18n="services.03.num">Service No. 03</div>
+        <h2 data-i18n="svc.move.title">Move-In / Move-Out</h2>
+        <p data-i18n="services.03.desc">Moving is stressful enough. We handle the clean so you can focus on the boxes. Deposit-return focused — we leave the space spotless and documented.</p>
         <ul class="includes">
-          <li>Full deep clean of every room</li>
-          <li>Inside all cabinets, closets & drawers</li>
-          <li>All appliances cleaned inside and out</li>
-          <li>Walls spot-cleaned for marks & scuffs</li>
-          <li>Interior windows cleaned</li>
-          <li>Deposit-return focused checklist</li>
+          <li data-i18n="services.03.inc1">Full deep clean of every room</li>
+          <li data-i18n="services.03.inc2">Inside all cabinets, closets & drawers</li>
+          <li data-i18n="services.03.inc3">All appliances cleaned inside and out</li>
+          <li data-i18n="services.03.inc4">Walls spot-cleaned for marks & scuffs</li>
+          <li data-i18n="services.03.inc5">Interior windows cleaned</li>
+          <li data-i18n="services.03.inc6">Deposit-return focused checklist</li>
         </ul>
-        <div class="price-pill"><span class="price-from">Starting at</span><span class="price-val">$280 / unit</span></div>
+        <div class="price-pill"><span class="price-from" data-i18n="services.price_from">Starting at</span><span class="price-val">$280 <span data-i18n="services.per_unit">/ unit</span></span></div>
         <div>
-          <a href="contact.html" class="btn-gold">Book This Service</a>
-          <a href="contact.html" class="btn-ghost-sm"><span class="ghost-line"></span> Get a Custom Quote</a>
+          <a href="contact.html" class="btn-gold" data-i18n="services.book">Book This Service</a>
+          <a href="contact.html" class="btn-ghost-sm"><span class="ghost-line"></span> <span data-i18n="services.custom_quote">Get a Custom Quote</span></a>
         </div>
       </div>
     </div>
@@ -333,24 +375,24 @@ footer{background:#050505;padding:5rem 6% 2.5rem;border-top:1px solid var(--gb)}
       <div class="svc-visual" style="background-image:url('https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1200&q=80')">
         <div class="svc-big-num">04</div>
         <div class="svc-icon-wrap">🏢</div>
-        <span class="svc-visual-label">Commercial</span>
+        <span class="svc-visual-label" data-i18n="services.04.label">Commercial</span>
       </div>
       <div class="svc-content">
-        <div class="svc-num-label">Service No. 04</div>
-        <h2>Commercial Cleaning</h2>
-        <p>A clean workspace isn't just about appearances — it affects focus, morale, and how clients perceive you. We offer reliable after-hours commercial cleaning on a schedule built around your business.</p>
+        <div class="svc-num-label" data-i18n="services.04.num">Service No. 04</div>
+        <h2 data-i18n="svc.comm.title">Commercial Cleaning</h2>
+        <p data-i18n="services.04.desc">A clean workspace isn't just about appearances — it affects focus, morale, and how clients perceive you. We offer reliable after-hours commercial cleaning on a schedule built around your business.</p>
         <ul class="includes">
-          <li>Offices, desks, surfaces & common areas</li>
-          <li>Restrooms — deep clean & restocking</li>
-          <li>Kitchen & break room sanitization</li>
-          <li>Lobby, reception & high-traffic floors</li>
-          <li>Glass partitions & entry doors</li>
-          <li>Custom contract pricing available</li>
+          <li data-i18n="services.04.inc1">Offices, desks, surfaces & common areas</li>
+          <li data-i18n="services.04.inc2">Restrooms — deep clean & restocking</li>
+          <li data-i18n="services.04.inc3">Kitchen & break room sanitization</li>
+          <li data-i18n="services.04.inc4">Lobby, reception & high-traffic floors</li>
+          <li data-i18n="services.04.inc5">Glass partitions & entry doors</li>
+          <li data-i18n="services.04.inc6">Custom contract pricing available</li>
         </ul>
-        <div class="price-pill"><span class="price-from">Starting at</span><span class="price-val">$180 / visit</span></div>
+        <div class="price-pill"><span class="price-from" data-i18n="services.price_from">Starting at</span><span class="price-val">$180 <span data-i18n="services.per_visit">/ visit</span></span></div>
         <div>
-          <a href="contact.html" class="btn-gold">Book This Service</a>
-          <a href="contact.html" class="btn-ghost-sm"><span class="ghost-line"></span> Get a Custom Quote</a>
+          <a href="contact.html" class="btn-gold" data-i18n="services.book">Book This Service</a>
+          <a href="contact.html" class="btn-ghost-sm"><span class="ghost-line"></span> <span data-i18n="services.custom_quote">Get a Custom Quote</span></a>
         </div>
       </div>
     </div>
@@ -359,23 +401,23 @@ footer{background:#050505;padding:5rem 6% 2.5rem;border-top:1px solid var(--gb)}
       <div class="svc-visual" style="background-image:url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1200&q=80')">
         <div class="svc-big-num">05</div>
         <div class="svc-icon-wrap">🏗️</div>
-        <span class="svc-visual-label">Post-Construction</span>
+        <span class="svc-visual-label" data-i18n="services.05.label">Post-Construction</span>
       </div>
       <div class="svc-content">
-        <div class="svc-num-label">Service No. 05</div>
-        <h2>Post-Construction Cleaning</h2>
-        <p>Construction leaves behind fine dust, debris, and residue that standard cleaning can't touch. We get the space truly client-ready after renovations or new builds.</p>
+        <div class="svc-num-label" data-i18n="services.05.num">Service No. 05</div>
+        <h2 data-i18n="svc.postc.title">Post-Construction Cleaning</h2>
+        <p data-i18n="services.05.desc">Construction leaves behind fine dust, debris, and residue that standard cleaning can't touch. We get the space truly client-ready after renovations or new builds.</p>
         <ul class="includes">
-          <li>Fine dust removal from all surfaces</li>
-          <li>Paint splatter, adhesive & sticker removal</li>
-          <li>Window tracks, frames & glass detailing</li>
-          <li>Floor scrubbing & protective polish</li>
-          <li>Vent cleaning & air quality prep</li>
-          <li>Debris coordination on request</li>
+          <li data-i18n="services.05.inc1">Fine dust removal from all surfaces</li>
+          <li data-i18n="services.05.inc2">Paint splatter, adhesive & sticker removal</li>
+          <li data-i18n="services.05.inc3">Window tracks, frames & glass detailing</li>
+          <li data-i18n="services.05.inc4">Floor scrubbing & protective polish</li>
+          <li data-i18n="services.05.inc5">Vent cleaning & air quality prep</li>
+          <li data-i18n="services.05.inc6">Debris coordination on request</li>
         </ul>
-        <div class="price-pill"><span class="price-from">Pricing</span><span class="price-val">Custom Quote</span></div>
+        <div class="price-pill"><span class="price-from" data-i18n="services.pricing">Pricing</span><span class="price-val" data-i18n="services.custom_quote_val">Custom Quote</span></div>
         <div>
-          <a href="contact.html" class="btn-gold">Request a Quote</a>
+          <a href="contact.html" class="btn-gold" data-i18n="services.request_quote">Request a Quote</a>
         </div>
       </div>
     </div>
@@ -387,17 +429,17 @@ footer{background:#050505;padding:5rem 6% 2.5rem;border-top:1px solid var(--gb)}
 <section class="addons">
   <div class="section-inner">
     <div class="addons-head">
-      <div class="kicker"><div class="kicker-line"></div><span class="kicker-text">Customize Your Clean</span></div>
-      <h2 class="sec-title">Available <em>Add-Ons</em></h2>
-      <p class="sec-sub">Add any of these to your booking. Just mention what you'd like when you reach out.</p>
+      <div class="kicker"><div class="kicker-line"></div><span class="kicker-text" data-i18n="services.addons.kicker">Customize Your Clean</span></div>
+      <h2 class="sec-title"><span data-i18n="services.addons.title1">Available</span> <em data-i18n="services.addons.title2">Add-Ons</em></h2>
+      <p class="sec-sub" data-i18n="services.addons.sub">Add any of these to your booking. Just mention what you'd like when you reach out.</p>
     </div>
     <div class="addons-grid">
-      <div class="addon-cell"><span class="addon-icon">🪟</span><div><div class="addon-label">Interior Windows</div><p class="addon-desc">Streak-free cleaning of all interior windows throughout the property</p></div></div>
-      <div class="addon-cell"><span class="addon-icon">🛋️</span><div><div class="addon-label">Upholstery Wipe-Down</div><p class="addon-desc">Sofas, chairs, and fabric-covered surfaces cleaned and refreshed</p></div></div>
-      <div class="addon-cell"><span class="addon-icon">🧺</span><div><div class="addon-label">Laundry & Fold</div><p class="addon-desc">Wash and fold linens, towels, and bedding on request</p></div></div>
-      <div class="addon-cell"><span class="addon-icon">🍽️</span><div><div class="addon-label">Dish Washing</div><p class="addon-desc">Hand-wash dishes and kitchen items left in the sink</p></div></div>
-      <div class="addon-cell"><span class="addon-icon">🐾</span><div><div class="addon-label">Pet Hair Treatment</div><p class="addon-desc">Specialized removal from floors, furniture, and fabric surfaces</p></div></div>
-      <div class="addon-cell"><span class="addon-icon">🌬️</span><div><div class="addon-label">Air Vent Cleaning</div><p class="addon-desc">Dust and debris cleared from vents and return air registers</p></div></div>
+      <div class="addon-cell"><span class="addon-icon">🪟</span><div><div class="addon-label" data-i18n="services.addons.1.label">Interior Windows</div><p class="addon-desc" data-i18n="services.addons.1.desc">Streak-free cleaning of all interior windows throughout the property</p></div></div>
+      <div class="addon-cell"><span class="addon-icon">🛋️</span><div><div class="addon-label" data-i18n="services.addons.2.label">Upholstery Wipe-Down</div><p class="addon-desc" data-i18n="services.addons.2.desc">Sofas, chairs, and fabric-covered surfaces cleaned and refreshed</p></div></div>
+      <div class="addon-cell"><span class="addon-icon">🧺</span><div><div class="addon-label" data-i18n="services.addons.3.label">Laundry & Fold</div><p class="addon-desc" data-i18n="services.addons.3.desc">Wash and fold linens, towels, and bedding on request</p></div></div>
+      <div class="addon-cell"><span class="addon-icon">🍽️</span><div><div class="addon-label" data-i18n="services.addons.4.label">Dish Washing</div><p class="addon-desc" data-i18n="services.addons.4.desc">Hand-wash dishes and kitchen items left in the sink</p></div></div>
+      <div class="addon-cell"><span class="addon-icon">🐾</span><div><div class="addon-label" data-i18n="services.addons.5.label">Pet Hair Treatment</div><p class="addon-desc" data-i18n="services.addons.5.desc">Specialized removal from floors, furniture, and fabric surfaces</p></div></div>
+      <div class="addon-cell"><span class="addon-icon">🌬️</span><div><div class="addon-label" data-i18n="services.addons.6.label">Air Vent Cleaning</div><p class="addon-desc" data-i18n="services.addons.6.desc">Dust and debris cleared from vents and return air registers</p></div></div>
     </div>
   </div>
 </section>
@@ -407,45 +449,45 @@ footer{background:#050505;padding:5rem 6% 2.5rem;border-top:1px solid var(--gb)}
   <div class="section-inner">
     <div class="faq-inner">
       <div class="faq-left">
-        <div class="kicker"><div class="kicker-line"></div><span class="kicker-text">FAQ</span></div>
-        <h2 class="sec-title">Common <em>Questions</em></h2>
-        <p>Can't find what you're looking for? Our AI assistant Alexis is available 24/7 — just open the chat.</p>
+        <div class="kicker"><div class="kicker-line"></div><span class="kicker-text" data-i18n="services.faq.kicker">FAQ</span></div>
+        <h2 class="sec-title"><span data-i18n="services.faq.title1">Common</span> <em data-i18n="services.faq.title2">Questions</em></h2>
+        <p data-i18n="services.faq.sub">Can't find what you're looking for? Our AI assistant Alexis is available 24/7 — just open the chat.</p>
       </div>
       <div class="faq-list">
         <div class="faq-item">
           <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
-            <h4>Do I need to be home during the cleaning?</h4>
+            <h4 data-i18n="services.faq.1.q">Do I need to be home during the cleaning?</h4>
             <span class="faq-icon">+</span>
           </div>
-          <div class="faq-a">Not at all. Many clients provide a key or entry code. We treat your home with the same care whether you're there or not — and we'll send you a confirmation when we finish.</div>
+          <div class="faq-a" data-i18n="services.faq.1.a">Not at all. Many clients provide a key or entry code. We treat your home with the same care whether you're there or not — and we'll send you a confirmation when we finish.</div>
         </div>
         <div class="faq-item">
           <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
-            <h4>Do you bring your own supplies and equipment?</h4>
+            <h4 data-i18n="services.faq.2.q">Do you bring your own supplies and equipment?</h4>
             <span class="faq-icon">+</span>
           </div>
-          <div class="faq-a">Yes — we bring everything. Professional-grade, eco-friendly products and all necessary equipment. If you have a preferred product you'd like us to use, just let us know.</div>
+          <div class="faq-a" data-i18n="services.faq.2.a">Yes — we bring everything. Professional-grade, eco-friendly products and all necessary equipment. If you have a preferred product you'd like us to use, just let us know.</div>
         </div>
         <div class="faq-item">
           <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
-            <h4>Are you insured and bonded?</h4>
+            <h4 data-i18n="services.faq.3.q">Are you insured and bonded?</h4>
             <span class="faq-icon">+</span>
           </div>
-          <div class="faq-a">Yes. SLN Enterprise LLC is fully bonded and insured. Every team member is background-checked before their first day. You're protected.</div>
+          <div class="faq-a" data-i18n="services.faq.3.a">Yes. SLN Enterprise LLC is fully bonded and insured. Every team member is background-checked before their first day. You're protected.</div>
         </div>
         <div class="faq-item">
           <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
-            <h4>What if I'm not satisfied with the clean?</h4>
+            <h4 data-i18n="services.faq.4.q">What if I'm not satisfied with the clean?</h4>
             <span class="faq-icon">+</span>
           </div>
-          <div class="faq-a">We'll return within 24 hours and make it right at no charge. Just let us know what wasn't up to standard and we'll address it immediately.</div>
+          <div class="faq-a" data-i18n="services.faq.4.a">We'll return within 24 hours and make it right at no charge. Just let us know what wasn't up to standard and we'll address it immediately.</div>
         </div>
         <div class="faq-item">
           <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
-            <h4>How quickly can I get a quote?</h4>
+            <h4 data-i18n="services.faq.5.q">How quickly can I get a quote?</h4>
             <span class="faq-icon">+</span>
           </div>
-          <div class="faq-a">Instantly — just open the chat widget and our AI assistant Alexis will walk you through it right now, even at 3am. Or fill out the contact form and a team member will follow up within 24 hours.</div>
+          <div class="faq-a" data-i18n="services.faq.5.a">Instantly — just open the chat widget and our AI assistant Alexis will walk you through it right now, even at 3am. Or fill out the contact form and a team member will follow up within 24 hours.</div>
         </div>
       </div>
     </div>
@@ -455,9 +497,9 @@ footer{background:#050505;padding:5rem 6% 2.5rem;border-top:1px solid var(--gb)}
 <!-- CTA -->
 <section class="cta-band">
   <div class="section-inner">
-    <h2>Not Sure Which Service<br><em>You Need?</em></h2>
-    <p>Tell us about your space and we'll recommend the right fit — no pressure, no commitment.</p>
-    <a href="contact.html" class="btn-gold">Talk to Us</a>
+    <h2><span data-i18n="services.cta.title1">Not Sure Which Service</span><br><em data-i18n="services.cta.title2">You Need?</em></h2>
+    <p data-i18n="services.cta.sub">Tell us about your space and we'll recommend the right fit — no pressure, no commitment.</p>
+    <a href="contact.html" class="btn-gold" data-i18n="services.cta.btn">Talk to Us</a>
   </div>
 </section>
 
@@ -466,34 +508,38 @@ footer{background:#050505;padding:5rem 6% 2.5rem;border-top:1px solid var(--gb)}
     <div class="footer-top">
       <div>
         <div class="f-logo">SLN <span>Enterprise</span> LLC</div>
-        <p class="f-about">Professional cleaning services for residential and commercial properties across Greater Seattle. Bonded, insured, and built on trust.</p>
+        <p class="f-about" data-i18n="footer.about">Professional cleaning services for residential and commercial properties across Greater Seattle. Bonded, insured, and built on trust.</p>
       </div>
       <div class="f-col">
-        <h5>Services</h5>
-        <a href="services.html">Residential Cleaning</a>
-        <a href="services.html">Deep Cleaning</a>
-        <a href="services.html">Move-In / Move-Out</a>
-        <a href="services.html">Commercial Cleaning</a>
-        <a href="services.html">Post-Construction</a>
+        <h5 data-i18n="footer.services_heading">Services</h5>
+        <a href="services.html" data-i18n="svc.res.title">Residential Cleaning</a>
+        <a href="services.html" data-i18n="svc.deep.title">Deep Cleaning</a>
+        <a href="services.html" data-i18n="svc.move.title">Move-In / Move-Out</a>
+        <a href="services.html" data-i18n="svc.comm.title">Commercial Cleaning</a>
+        <a href="services.html" data-i18n="svc.postc.title">Post-Construction</a>
       </div>
       <div class="f-col">
-        <h5>Company</h5>
-        <a href="about.html">About Us</a>
-        <a href="services.html">Services</a>
-        <a href="contact.html">Contact</a>
-        <a href="contact.html">Get a Quote</a>
+        <h5 data-i18n="footer.company_heading">Company</h5>
+        <a href="about.html" data-i18n="footer.company.about">About Us</a>
+        <a href="services.html" data-i18n="footer.company.services">Services</a>
+        <a href="contact.html" data-i18n="footer.company.contact">Contact</a>
+        <a href="contact.html" data-i18n="footer.company.quote">Get a Quote</a>
       </div>
       <div class="f-col">
-        <h5>Contact</h5>
-        <p>📍 Seattle, WA</p>
+        <h5 data-i18n="footer.contact_heading">Contact</h5>
+        <p>📍 <span data-i18n="footer.location">Seattle, WA</span></p>
         <p>📞 (206) 555-0100</p>
         <p>✉️ info@slnenterprisellc.online</p>
-        <p style="margin-top:.5rem;font-size:.75rem;line-height:1.8">Mon–Fri: 8am – 6pm<br>Sat: 9am – 4pm<br>Sun: By appointment</p>
+        <p style="margin-top:.5rem;font-size:.75rem;line-height:1.8" data-i18n="footer.hours">Mon–Fri: 8am – 6pm<br>Sat: 9am – 4pm<br>Sun: By appointment</p>
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2025 SLN Enterprise LLC. All rights reserved.</span>
-      <div class="f-bottom-links"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a><a href="contact.html">Contact</a></div>
+      <span data-i18n="footer.copyright">© 2025 SLN Enterprise LLC. All rights reserved.</span>
+      <div class="f-bottom-links">
+        <a href="#" data-i18n="footer.privacy">Privacy Policy</a>
+        <a href="#" data-i18n="footer.terms">Terms of Service</a>
+        <a href="contact.html" data-i18n="footer.company.contact">Contact</a>
+      </div>
     </div>
   </div>
 </footer>
@@ -504,5 +550,6 @@ footer{background:#050505;padding:5rem 6% 2.5rem;border-top:1px solid var(--gb)}
 document.getElementById('hamburger').addEventListener('click',()=>document.getElementById('nav-links').classList.toggle('open'));
 </script>
 <script src="chat.js"></script>
+<script src="i18n.js"></script>
 </body>
 </html>
