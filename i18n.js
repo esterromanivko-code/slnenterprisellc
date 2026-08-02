@@ -67,7 +67,7 @@
   async function loadDict(lang) {
     if (cache[lang]) return cache[lang];
     try {
-      const res = await fetch(`locales/${lang}.json`);
+      const res = await fetch(`/locales/${lang}.json`);
       if (!res.ok) throw new Error('locale not found: ' + lang);
       const dict = await res.json();
       cache[lang] = dict;
