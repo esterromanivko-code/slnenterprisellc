@@ -144,12 +144,12 @@
       const data = await res.json();
 
       if (!res.ok || data.error) {
-        addBotMessage(data.error || "Sorry, I'm having a hiccup. Please try again or call us at (206) 555-0100!");
+        addBotMessage(data.error || "Sorry, I'm having a hiccup. Please try again or call us at (206) 609-9422!");
       } else {
         addBotMessage(data.reply);
       }
     } catch {
-      addBotMessage("Hmm, I lost my connection for a second. Please try again or reach us at (206) 555-0100!");
+      addBotMessage("Hmm, I lost my connection for a second. Please try again or reach us at (206) 609-9422!");
     } finally {
       isTyping = false;
       setSendDisabled(false);

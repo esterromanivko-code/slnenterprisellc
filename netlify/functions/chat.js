@@ -45,7 +45,7 @@ SERVICE AREA: ${area}
 
 BUSINESS HOURS: ${kb.hours?.weekdays || 'Mon–Fri: 8am – 6pm'} | ${kb.hours?.saturday || 'Sat: 9am – 4pm'} | ${kb.hours?.sunday || 'Sun: By appointment'}
 
-${faqs ? 'FREQUENTLY ASKED QUESTIONS:\n' + faqs + '\n\n' : ''}${promos}CONTACT: ${kb.business?.phone || '(206) 555-0100'} | ${kb.business?.email || 'info@slnenterprisellc.online'}
+${faqs ? 'FREQUENTLY ASKED QUESTIONS:\n' + faqs + '\n\n' : ''}${promos}CONTACT: ${kb.business?.phone || '(206) 609-9422'} | ${kb.business?.email || 'info@slnenterprisellc.online'}
 
 IMPORTANT RULES:
 - Keep responses SHORT — 2 to 4 sentences max unless more detail is genuinely needed
