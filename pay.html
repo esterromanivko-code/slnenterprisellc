@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pay Your Invoice — SLN Enterprise LLC | Seattle Cleaning</title>
+<meta name="description" content="Securely pay your SLN Enterprise LLC cleaning invoice online by card, Apple Pay, Google Pay, or Zelle. Fast, encrypted, and receipted.">
+<meta name="robots" content="noindex,follow">
+<link rel="canonical" href="https://slnenterprisellc.online/pay.html">
+<meta property="og:title" content="Pay Your Invoice — SLN Enterprise LLC">
+<meta property="og:description" content="Securely pay your cleaning invoice online. Card, Apple Pay, Google Pay, or Zelle.">
+<meta property="og:url" content="https://slnenterprisellc.online/pay.html">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✦</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --black:#080808;--dark:#0E0D0D;--surf:#151212;--surf2:#1B1818;
+  --cream:#EDE8DF;--cream2:#F5F0E8;--gold:#C4A265;--gold2:#D4B483;
+  --gb:rgba(196,162,101,.18);--gb2:rgba(196,162,101,.1);
+  --t1:#EDE8DF;--t2:rgba(237,232,223,.55);--t3:rgba(237,232,223,.3);
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--dark);color:var(--t1);-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:'Cormorant Garamond',serif}
+a{text-decoration:none;color:inherit}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(8,8,8,.92);backdrop-filter:blur(16px);display:flex;align-items:center;justify-content:space-between;padding:0 6%;height:78px;border-bottom:1px solid var(--gb)}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:500;color:var(--cream);letter-spacing:.18em;text-transform:uppercase}
+.nav-logo span{color:var(--gold)}
+.nav-links{display:flex;gap:2.2rem;align-items:center}
+.nav-links a{font-size:.68rem;font-weight:400;color:var(--t2);letter-spacing:.2em;text-transform:uppercase;transition:color .2s}
+.nav-links a:hover,.nav-links a.active{color:var(--gold)}
+.nav-cta{border:1px solid var(--gb)!important;color:var(--gold)!important;padding:.5rem 1.3rem;font-size:.68rem!important;letter-spacing:.15em!important;transition:all .25s!important}
+.nav-cta:hover{background:var(--gold)!important;color:var(--dark)!important;border-color:var(--gold)!important}
+.hamburger{display:none;flex-direction:column;gap:6px;cursor:pointer;padding:4px;background:none;border:none}
+.hamburger span{display:block;width:22px;height:1px;background:var(--cream)}
+
+.lang-switch{position:relative}
+.lang-btn{display:flex;align-items:center;gap:.4rem;background:transparent;border:1px solid var(--gb);color:var(--t2);font-family:'Inter',sans-serif;font-size:.68rem;letter-spacing:.1em;padding:.5rem .85rem;cursor:pointer;transition:all .2s}
+.lang-btn:hover{border-color:var(--gold);color:var(--gold)}
+.lang-btn .lg-caret{font-size:.6rem;transition:transform .2s}
+.lang-btn.open .lg-caret{transform:rotate(180deg)}
+.lang-menu{position:absolute;top:calc(100% + 10px);right:0;background:#0c0b0b;border:1px solid var(--gb);min-width:200px;max-height:340px;overflow-y:auto;box-shadow:0 20px 50px rgba(0,0,0,.5);opacity:0;pointer-events:none;transform:translateY(-8px);transition:opacity .2s,transform .2s;z-index:300}
+.lang-menu.open{opacity:1;pointer-events:all;transform:translateY(0)}
+.lang-opt{display:flex;align-items:center;gap:.7rem;padding:.7rem 1rem;font-size:.78rem;color:var(--t2);cursor:pointer;transition:background .15s,color .15s;border-bottom:1px solid rgba(196,162,101,.08)}
+.lang-opt:last-child{border-bottom:none}
+.lang-opt:hover{background:var(--surf);color:var(--cream)}
+.lang-opt.active{color:var(--gold)}
+.lang-flag{font-size:1rem}
+
+/* PAGE HERO */
+.page-hero{background:var(--black);padding:160px 6% 100px;position:relative;overflow:hidden;border-bottom:1px solid var(--gb)}
+.page-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 60% 40%, rgba(196,162,101,.05) 0%, transparent 65%)}
+.page-hero-inner{max-width:1200px;margin:0 auto;position:relative}
+.breadcrumb{font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:var(--t3);margin-bottom:1.5rem}
+.breadcrumb a{color:var(--gold)}
+.kicker{display:flex;align-items:center;gap:.85rem;margin-bottom:1.25rem}
+.kicker-line{width:28px;height:1px;background:var(--gold)}
+.kicker-text{font-size:.63rem;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);font-family:'Inter',sans-serif;font-weight:500}
+.page-hero h1{font-size:clamp(2.5rem,5vw,4.5rem);font-weight:300;color:var(--cream);line-height:1.1;margin-bottom:1.25rem}
+.page-hero h1 em{font-style:italic;color:var(--gold)}
+.page-hero p{font-size:.9rem;color:var(--t2);max-width:520px;line-height:1.9}
+
+/* MAIN */
+.pay-main{padding:7rem 6%;background:var(--dark)}
+.pay-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1.7fr;gap:5rem;align-items:start}
+
+/* LEFT SUMMARY */
+.pay-aside{position:sticky;top:6rem}
+.info-label-head{font-size:.63rem;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);font-family:'Inter',sans-serif;font-weight:500;margin-bottom:1.25rem}
+.pay-aside h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.6rem,2.5vw,2.1rem);font-weight:300;color:var(--cream);margin-bottom:1rem;line-height:1.2}
+.pay-aside h2 em{font-style:italic;color:var(--gold)}
+.pay-aside > p{font-size:.88rem;color:var(--t2);line-height:1.85;margin-bottom:2.5rem}
+
+.summary{border:1px solid var(--gb);margin-bottom:2rem;background:var(--surf)}
+.summary-head{padding:.85rem 1.5rem;border-bottom:1px solid var(--gb);font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+.sum-row{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;padding:.9rem 1.5rem;border-bottom:1px solid var(--gb)}
+.sum-label{font-size:.8rem;color:var(--t2)}
+.sum-val{font-size:.85rem;color:var(--cream);text-align:right;word-break:break-word}
+.sum-row.muted .sum-val{color:var(--t3)}
+.sum-total{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;padding:1.35rem 1.5rem;background:rgba(196,162,101,.06)}
+.sum-total-label{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+.sum-total-val{font-family:'Cormorant Garamond',serif;font-size:2.1rem;font-weight:400;color:var(--gold);line-height:1}
+
+.assure{border:1px solid var(--gb)}
+.assure-row{display:flex;align-items:flex-start;gap:1rem;padding:1.1rem 1.5rem;border-bottom:1px solid var(--gb);transition:background .2s}
+.assure-row:last-child{border-bottom:none}
+.assure-row:hover{background:var(--surf)}
+.assure-icon{width:34px;height:34px;flex-shrink:0;border:1px solid var(--gb);display:flex;align-items:center;justify-content:center;font-size:.95rem}
+.assure-title{font-size:.8rem;color:var(--cream);margin-bottom:2px}
+.assure-desc{font-size:.75rem;color:var(--t2);line-height:1.6}
+.assure-desc a{color:var(--gold)}
+
+/* FORM PANEL */
+.form-wrap{background:var(--surf);border:1px solid var(--gb)}
+.form-wrap-head{padding:2rem 2.5rem 1.75rem;border-bottom:1px solid var(--gb)}
+.form-wrap-head h3{font-size:1.6rem;font-weight:300;color:var(--cream);margin-bottom:.35rem}
+.form-wrap-head h3 em{font-style:italic;color:var(--gold)}
+.form-wrap-head p{font-size:.83rem;color:var(--t2)}
+.form-body{padding:2rem 2.5rem 2.5rem}
+.form-section-label{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);padding-bottom:.85rem;margin-bottom:1.25rem;border-bottom:1px solid var(--gb);margin-top:2rem}
+.form-section-label:first-child{margin-top:0}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:.85rem}
+.fg{display:flex;flex-direction:column;gap:.4rem}
+.fg.full{grid-column:1/-1}
+.fg label{font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;color:var(--t3)}
+.fg input,.fg select,.fg textarea{background:var(--surf2);border:1px solid var(--gb);color:var(--cream);padding:.75rem 1rem;font-family:'Inter',sans-serif;font-size:.88rem;outline:none;transition:border-color .2s;appearance:none;-webkit-appearance:none;width:100%}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--gold)}
+.fg select{cursor:pointer}
+.fg select option{background:var(--surf2)}
+.fg input.invalid,.fg select.invalid{border-color:#B4544A}
+.field-err{font-size:.7rem;color:#D08A80;display:none}
+.field-err.show{display:block}
+
+/* AMOUNT */
+.amount-wrap{position:relative}
+.amount-wrap .cur{position:absolute;left:1rem;top:50%;transform:translateY(-50%);font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--gold);pointer-events:none;line-height:1}
+#amount{font-family:'Cormorant Garamond',serif;font-size:1.75rem;font-weight:400;color:var(--cream);padding:.85rem 1rem .85rem 2.3rem;letter-spacing:.02em}
+#amount::-webkit-outer-spin-button,#amount::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+
+/* TIP */
+.tip-opts{display:grid;grid-template-columns:repeat(5,1fr);gap:.5rem;margin-top:.4rem}
+.topt{position:relative}
+.topt input{position:absolute;opacity:0;width:0;height:0}
+.topt label{display:block;padding:.65rem .4rem;border:1px solid var(--gb);font-size:.78rem;color:var(--t2);cursor:pointer;transition:all .2s;text-align:center;background:var(--surf2)}
+.topt input:checked + label{border-color:var(--gold);color:var(--cream);background:rgba(196,162,101,.08)}
+.topt label:hover{border-color:rgba(196,162,101,.4);color:var(--t1)}
+.tip-note{font-size:.72rem;color:var(--t3);margin-top:.5rem;line-height:1.6}
+#tip-custom-wrap{display:none;margin-top:.6rem}
+#tip-custom-wrap.show{display:block}
+
+/* METHODS */
+.method-opts{display:flex;flex-direction:column;gap:.5rem}
+.mopt{position:relative}
+.mopt input{position:absolute;opacity:0;width:0;height:0}
+.mopt label{display:flex;align-items:center;gap:1rem;padding:1rem 1.15rem;border:1px solid var(--gb);cursor:pointer;transition:all .2s;background:var(--surf2)}
+.mopt input:checked + label{border-color:var(--gold);background:rgba(196,162,101,.08)}
+.mopt label:hover{border-color:rgba(196,162,101,.4)}
+.mopt input:focus-visible + label{border-color:var(--gold);outline:1px solid var(--gold);outline-offset:2px}
+.m-icon{width:38px;height:38px;flex-shrink:0;border:1px solid var(--gb);display:flex;align-items:center;justify-content:center;font-size:1rem}
+.m-name{font-size:.88rem;color:var(--cream);margin-bottom:2px}
+.m-desc{font-size:.73rem;color:var(--t2);line-height:1.55}
+.m-tag{margin-left:auto;flex-shrink:0;font-size:.55rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);border:1px solid var(--gb);padding:.3rem .55rem}
+
+/* MANUAL PANELS */
+.manual-panel{display:none;margin-top:1.5rem;border:1px solid var(--gb);background:var(--surf2)}
+.manual-panel.show{display:block}
+.manual-head{padding:.85rem 1.35rem;border-bottom:1px solid var(--gb);font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+.manual-body{padding:1.35rem}
+.manual-step{display:flex;gap:.9rem;margin-bottom:1rem}
+.manual-step:last-of-type{margin-bottom:0}
+.step-num{width:22px;height:22px;flex-shrink:0;border:1px solid var(--gb);display:flex;align-items:center;justify-content:center;font-size:.65rem;color:var(--gold);margin-top:1px}
+.step-text{font-size:.82rem;color:var(--t2);line-height:1.7}
+.step-text strong{color:var(--cream);font-weight:500}
+.copy-line{display:flex;align-items:center;gap:.6rem;margin-top:.45rem;flex-wrap:wrap}
+.copy-val{font-family:'Inter',sans-serif;font-size:.9rem;color:var(--gold);background:var(--surf);border:1px solid var(--gb);padding:.45rem .8rem;letter-spacing:.02em}
+.copy-btn{background:transparent;border:1px solid var(--gb);color:var(--t2);font-family:'Inter',sans-serif;font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;padding:.45rem .75rem;cursor:pointer;transition:all .2s}
+.copy-btn:hover{border-color:var(--gold);color:var(--gold)}
+.copy-btn.done{border-color:var(--gold);color:var(--gold)}
+
+/* SUBMIT */
+.form-submit{width:100%;background:var(--gold);color:var(--dark);border:none;padding:1rem;margin-top:2rem;font-family:'Inter',sans-serif;font-weight:600;font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;cursor:pointer;transition:all .25s}
+.form-submit:hover:not(:disabled){background:var(--gold2);box-shadow:0 8px 32px rgba(196,162,101,.3)}
+.form-submit:disabled{opacity:.5;cursor:not-allowed}
+.form-note{font-size:.72rem;color:var(--t3);text-align:center;margin-top:.85rem;line-height:1.7}
+.form-error{display:none;margin-top:1rem;border:1px solid rgba(180,84,74,.5);background:rgba(180,84,74,.08);padding:.9rem 1.15rem;font-size:.8rem;color:#E0A79F;line-height:1.7}
+.form-error.show{display:block}
+.form-error a{color:var(--gold)}
+/* Neutral variant for "you closed the checkout" — not a failure. */
+.form-error.info{border-color:var(--gb);background:rgba(196,162,101,.06);color:var(--t2)}
+.pay-badges{display:flex;align-items:center;justify-content:center;gap:.6rem;flex-wrap:wrap;margin-top:1.25rem}
+.pay-badge{font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:var(--t3);border:1px solid var(--gb);padding:.35rem .7rem}
+
+/* BOTTOM */
+.pay-bottom{background:var(--surf);border-top:1px solid var(--gb);padding:5rem 6%}
+.pay-bottom-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--gb);border:1px solid var(--gb)}
+.bottom-card{background:var(--surf);padding:2.5rem;text-align:center;transition:background .25s}
+.bottom-card:hover{background:var(--surf2)}
+.bottom-icon{font-size:1.75rem;margin-bottom:1rem}
+.bottom-card h4{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:400;color:var(--cream);margin-bottom:.5rem}
+.bottom-card p{font-size:.82rem;color:var(--t2);line-height:1.7}
+.bottom-card a{color:var(--gold)}
+
+footer{background:#050505;padding:5rem 6% 2.5rem;border-top:1px solid var(--gb)}
+.footer-inner{max-width:1200px;margin:0 auto}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:4rem;padding-bottom:4rem;margin-bottom:2.5rem;border-bottom:1px solid var(--gb)}
+.f-logo{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:500;color:var(--cream);letter-spacing:.18em;text-transform:uppercase;margin-bottom:1.25rem}
+.f-logo span{color:var(--gold)}
+.f-about{font-size:.83rem;line-height:1.85;color:var(--t2)}
+.f-col h5{font-size:.6rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:1.25rem}
+.f-col a,.f-col p{display:block;font-size:.82rem;color:var(--t2);margin-bottom:.6rem;transition:color .2s}
+.f-col a:hover{color:var(--cream)}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;font-size:.7rem;color:var(--t3);gap:1rem;flex-wrap:wrap}
+.f-bottom-links{display:flex;gap:2rem}
+.f-bottom-links a{color:var(--t3);transition:color .2s}
+.f-bottom-links a:hover{color:var(--gold)}
+
+/* RTL */
+html[dir="rtl"] .assure-row{flex-direction:row-reverse;text-align:right}
+html[dir="rtl"] .mopt label{flex-direction:row-reverse;text-align:right}
+html[dir="rtl"] .m-tag{margin-left:0;margin-right:auto}
+html[dir="rtl"] .manual-step{flex-direction:row-reverse;text-align:right}
+html[dir="rtl"] .sum-row,html[dir="rtl"] .sum-total{flex-direction:row-reverse}
+html[dir="rtl"] .sum-val{text-align:left}
+html[dir="rtl"] .lang-menu{right:auto;left:0}
+html[dir="rtl"] .lang-opt{flex-direction:row-reverse}
+html[dir="rtl"] .amount-wrap .cur{left:auto;right:1rem}
+html[dir="rtl"] #amount{padding:.85rem 2.3rem .85rem 1rem}
+
+@media(max-width:960px){.pay-inner{grid-template-columns:1fr;gap:3.5rem}.pay-aside{position:static}.pay-bottom-inner{grid-template-columns:1fr}.footer-top{grid-template-columns:1fr 1fr;gap:2.5rem}}
+@media(max-width:640px){
+  nav{padding:0 4%}.nav-links{display:none}
+  .nav-links.open{display:flex;flex-direction:column;position:absolute;top:78px;left:0;right:0;background:#080808;padding:1.75rem 4%;border-bottom:1px solid var(--gb);gap:1.5rem}
+  .hamburger{display:flex}
+  .pay-main{padding:5rem 4%}.page-hero{padding:130px 4% 70px}.pay-bottom{padding:4rem 4%}
+  .form-grid{grid-template-columns:1fr}.fg.full{grid-column:1}
+  .form-body{padding:1.5rem}.form-wrap-head{padding:1.5rem}
+  .tip-opts{grid-template-columns:repeat(3,1fr)}
+  .m-tag{display:none}
+  .footer-top{grid-template-columns:1fr;gap:2rem}.footer-bottom{flex-direction:column;align-items:flex-start}
+}
+</style>
+</head>
+<body>
+
+<!--
+  Strings the script builds at runtime. They live here, first in the document
+  and hidden, so i18n.js translates them like any other label and the script
+  always reads a pristine copy — the visible elements get overwritten as the
+  customer types, so they cannot be used as the source of truth.
+-->
+<div hidden id="i18n-strings">
+  <span data-i18n="pay.summary.pending">Not entered yet</span>
+  <span data-i18n="pay.zelle.memo_empty">Enter your invoice number above</span>
+  <span data-i18n="pay.form.submit">Pay Securely</span>
+  <span data-i18n="pay.form.submit_total">Pay {amount} securely</span>
+  <span data-i18n="pay.form.submitting">Opening secure checkout…</span>
+  <span data-i18n="pay.copied">Copied</span>
+  <span data-i18n="pay.error.fallback">You can also pay by Zelle using the option above, or call us at</span>
+  <span data-i18n="pay.error.canceled">No payment was taken — your details are still here whenever you're ready.</span>
+</div>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="index.html" class="nav-logo">SLN <span>Enterprise</span> LLC</a>
+  <div class="nav-links" id="nav-links">
+    <a href="index.html" data-i18n="nav.home">Home</a>
+    <a href="services.html" data-i18n="nav.services">Services</a>
+    <a href="about.html" data-i18n="nav.about">About</a>
+    <a href="contact.html" data-i18n="nav.contact">Contact</a>
+    <a href="blog/index.html" data-i18n="nav.blog">Blog</a>
+    <a href="contact.html" class="nav-cta" data-i18n="nav.cta">Request a Quote</a>
+    <div class="lang-switch" id="lang-switch"></div>
+  </div>
+  <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="breadcrumb"><a href="index.html" data-i18n="nav.home">Home</a> &nbsp;/&nbsp; <span data-i18n="pay.breadcrumb">Pay Invoice</span></div>
+    <div class="kicker">
+      <div class="kicker-line"></div>
+      <span class="kicker-text" data-i18n="pay.kicker">Secure Invoice Payment</span>
+    </div>
+    <h1><span data-i18n="pay.h1.a">Pay Your</span> <em data-i18n="pay.h1.b">Invoice</em></h1>
+    <p data-i18n="pay.h1.desc">Settle your cleaning invoice in under a minute. Pay by card, Apple&nbsp;Pay, or Google&nbsp;Pay through our encrypted checkout — or use Zelle if you'd rather skip the card. A receipt is emailed to you the moment it clears.</p>
+  </div>
+</div>
+
+<!-- MAIN -->
+<div class="pay-main">
+  <div class="pay-inner">
+
+    <!-- LEFT: LIVE SUMMARY -->
+    <div class="pay-aside">
+      <div class="info-label-head" data-i18n="pay.aside.label">Your Payment</div>
+      <h2><span data-i18n="pay.aside.h2a">Simple, secure,</span> <em data-i18n="pay.aside.h2b">receipted.</em></h2>
+      <p data-i18n="pay.aside.sub">Enter the amount shown on your invoice. Everything updates here as you type, so you can see exactly what you're paying before you confirm.</p>
+
+      <div class="summary">
+        <div class="summary-head" data-i18n="pay.summary.head">Payment Summary</div>
+        <div class="sum-row muted" id="row-invoice">
+          <span class="sum-label" data-i18n="pay.summary.invoice">Invoice</span>
+          <span class="sum-val" id="sum-invoice" data-i18n="pay.summary.pending">Not entered yet</span>
+        </div>
+        <div class="sum-row muted" id="row-service">
+          <span class="sum-label" data-i18n="pay.summary.service">Service</span>
+          <span class="sum-val" id="sum-service" data-i18n="pay.summary.pending">Not entered yet</span>
+        </div>
+        <div class="sum-row">
+          <span class="sum-label" data-i18n="pay.summary.amount">Invoice amount</span>
+          <span class="sum-val" id="sum-amount">$0.00</span>
+        </div>
+        <div class="sum-row">
+          <span class="sum-label" data-i18n="pay.summary.tip">Tip for the crew</span>
+          <span class="sum-val" id="sum-tip">$0.00</span>
+        </div>
+        <div class="sum-total">
+          <span class="sum-total-label" data-i18n="pay.summary.total">Total</span>
+          <span class="sum-total-val" id="sum-total">$0.00</span>
+        </div>
+      </div>
+
+      <div class="assure">
+        <div class="assure-row">
+          <div class="assure-icon">🔒</div>
+          <div>
+            <div class="assure-title" data-i18n="pay.assure.1.title">We never see your card</div>
+            <div class="assure-desc" data-i18n="pay.assure.1.desc">Card details are entered on Stripe's PCI-compliant checkout — they never touch our website or servers.</div>
+          </div>
+        </div>
+        <div class="assure-row">
+          <div class="assure-icon">✉️</div>
+          <div>
+            <div class="assure-title" data-i18n="pay.assure.2.title">Instant emailed receipt</div>
+            <div class="assure-desc" data-i18n="pay.assure.2.desc">Your receipt arrives the second the payment clears. Keep it for your records or expense report.</div>
+          </div>
+        </div>
+        <div class="assure-row">
+          <div class="assure-icon">💬</div>
+          <div>
+            <div class="assure-title" data-i18n="pay.assure.3.title">Something look wrong?</div>
+            <div class="assure-desc"><span data-i18n="pay.assure.3.desc">Don't pay a number you're unsure about. Call us at</span> <a href="tel:+12066099422">(206)&nbsp;609-9422</a> <span data-i18n="pay.assure.3.desc2">and we'll walk through the invoice with you.</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: FORM -->
+    <div class="form-wrap">
+      <div class="form-wrap-head">
+        <h3><span data-i18n="pay.form.title1">Invoice</span> <em data-i18n="pay.form.title2">Payment</em></h3>
+        <p data-i18n="pay.form.sub">Fields marked * are required. Takes about 60 seconds.</p>
+      </div>
+      <div class="form-body">
+        <form id="pay-form" novalidate>
+
+          <div class="form-section-label" data-i18n="pay.form.section1">Invoice Details</div>
+          <div class="form-grid">
+            <div class="fg">
+              <label for="invoice" data-i18n="pay.form.invoice">Invoice Number *</label>
+              <input type="text" id="invoice" name="invoice" placeholder="INV-1042" autocomplete="off" maxlength="40" required>
+              <span class="field-err" id="err-invoice" data-i18n="pay.err.invoice">Please enter the invoice number from your bill.</span>
+            </div>
+            <div class="fg">
+              <label for="service" data-i18n="pay.form.service">Service Provided</label>
+              <select id="service" name="service">
+                <option value="" data-i18n="pay.form.select">Select…</option>
+                <option data-i18n="svc.res.title">Residential Cleaning</option>
+                <option data-i18n="svc.deep.title">Deep Cleaning</option>
+                <option data-i18n="svc.move.title">Move-In / Move-Out</option>
+                <option data-i18n="svc.comm.title">Commercial Cleaning</option>
+                <option data-i18n="svc.postc.title">Post-Construction</option>
+                <option data-i18n="pay.form.service_other">Other / Multiple Services</option>
+              </select>
+            </div>
+            <div class="fg full">
+              <label for="amount" data-i18n="pay.form.amount">Amount Due (USD) *</label>
+              <div class="amount-wrap">
+                <span class="cur" aria-hidden="true">$</span>
+                <input type="text" id="amount" name="amount" inputmode="decimal" placeholder="0.00" autocomplete="off" maxlength="12" required>
+              </div>
+              <span class="field-err" id="err-amount" data-i18n="pay.err.amount">Enter the amount from your invoice, between $1 and $10,000.</span>
+            </div>
+          </div>
+
+          <div class="form-section-label" data-i18n="pay.form.section2">Your Details</div>
+          <div class="form-grid">
+            <div class="fg">
+              <label for="name" data-i18n="pay.form.name">Name on the Invoice *</label>
+              <input type="text" id="name" name="name" placeholder="Jane Smith" autocomplete="name" maxlength="80" required>
+              <span class="field-err" id="err-name" data-i18n="pay.err.name">Please enter your name so we can match the payment.</span>
+            </div>
+            <div class="fg">
+              <label for="email" data-i18n="pay.form.email">Email for Receipt *</label>
+              <input type="email" id="email" name="email" placeholder="jane@example.com" autocomplete="email" maxlength="120" required>
+              <span class="field-err" id="err-email" data-i18n="pay.err.email">Please enter a valid email so your receipt reaches you.</span>
+            </div>
+            <div class="fg full">
+              <label for="address" data-i18n="pay.form.address">Service Address</label>
+              <input type="text" id="address" name="address" data-i18n-placeholder="pay.form.address_ph" placeholder="Capitol Hill, Seattle — or full address" autocomplete="street-address" maxlength="140">
+            </div>
+          </div>
+
+          <div class="form-section-label" data-i18n="pay.form.section3">Add a Tip (Optional)</div>
+          <div class="fg full">
+            <label data-i18n="pay.form.tip_q">100% of tips go directly to the cleaners who did your job</label>
+            <div class="tip-opts">
+              <div class="topt"><input type="radio" id="t0" name="tip" value="0" checked><label for="t0" data-i18n="pay.form.tip_none">None</label></div>
+              <div class="topt"><input type="radio" id="t15" name="tip" value="15"><label for="t15">15%</label></div>
+              <div class="topt"><input type="radio" id="t18" name="tip" value="18"><label for="t18">18%</label></div>
+              <div class="topt"><input type="radio" id="t20" name="tip" value="20"><label for="t20">20%</label></div>
+              <div class="topt"><input type="radio" id="tc" name="tip" value="custom"><label for="tc" data-i18n="pay.form.tip_custom">Other</label></div>
+            </div>
+            <div id="tip-custom-wrap">
+              <div class="amount-wrap">
+                <span class="cur" aria-hidden="true">$</span>
+                <input type="text" id="tip-custom" inputmode="decimal" placeholder="0.00" autocomplete="off" maxlength="10" style="font-size:1rem;padding-left:2.1rem" aria-label="Custom tip amount">
+              </div>
+            </div>
+            <p class="tip-note" data-i18n="pay.form.tip_note">Tipping is never expected — our crews are paid a living wage either way.</p>
+          </div>
+
+          <div class="form-section-label" data-i18n="pay.form.section4">How Would You Like to Pay?</div>
+          <div class="method-opts" id="method-opts">
+            <div class="mopt" data-method="card">
+              <input type="radio" id="m-card" name="method" value="card" checked>
+              <label for="m-card">
+                <span class="m-icon">💳</span>
+                <span>
+                  <span class="m-name" data-i18n="pay.method.card.name">Card, Apple Pay, or Google Pay</span>
+                  <span class="m-desc" data-i18n="pay.method.card.desc">Secure checkout powered by Stripe. Instant confirmation and receipt.</span>
+                </span>
+                <span class="m-tag" data-i18n="pay.method.card.tag">Fastest</span>
+              </label>
+            </div>
+            <div class="mopt" data-method="zelle">
+              <input type="radio" id="m-zelle" name="method" value="zelle">
+              <label for="m-zelle">
+                <span class="m-icon">🏦</span>
+                <span>
+                  <span class="m-name" data-i18n="pay.method.zelle.name">Zelle bank transfer</span>
+                  <span class="m-desc" data-i18n="pay.method.zelle.desc">Send straight from your banking app. No processing fees for anyone.</span>
+                </span>
+                <span class="m-tag" data-i18n="pay.method.zelle.tag">No fees</span>
+              </label>
+            </div>
+            <div class="mopt" data-method="venmo">
+              <input type="radio" id="m-venmo" name="method" value="venmo">
+              <label for="m-venmo">
+                <span class="m-icon">📱</span>
+                <span>
+                  <span class="m-name" data-i18n="pay.method.venmo.name">Venmo</span>
+                  <span class="m-desc" data-i18n="pay.method.venmo.desc">Pay from your Venmo balance or linked bank account.</span>
+                </span>
+              </label>
+            </div>
+          </div>
+
+          <!-- ZELLE INSTRUCTIONS -->
+          <div class="manual-panel" id="panel-zelle">
+            <div class="manual-head" data-i18n="pay.zelle.head">How to Pay by Zelle</div>
+            <div class="manual-body">
+              <div class="manual-step">
+                <span class="step-num">1</span>
+                <span class="step-text">
+                  <span data-i18n="pay.zelle.s1">Open your bank's app and choose <strong>Send with Zelle</strong>, then send to:</span>
+                  <span class="copy-line">
+                    <span class="copy-val" id="zelle-handle">(206) 609-9422</span>
+                    <button type="button" class="copy-btn" data-copy="zelle-handle" data-i18n="pay.copy">Copy</button>
+                  </span>
+                </span>
+              </div>
+              <div class="manual-step">
+                <span class="step-num">2</span>
+                <span class="step-text">
+                  <span data-i18n="pay.zelle.s2">Enter the exact total shown in your summary:</span>
+                  <span class="copy-line">
+                    <span class="copy-val" id="zelle-amount">$0.00</span>
+                    <button type="button" class="copy-btn" data-copy="zelle-amount" data-i18n="pay.copy">Copy</button>
+                  </span>
+                </span>
+              </div>
+              <div class="manual-step">
+                <span class="step-num">3</span>
+                <span class="step-text">
+                  <span data-i18n="pay.zelle.s3">Put your invoice number in the memo so we can match it to your account:</span>
+                  <span class="copy-line">
+                    <span class="copy-val" id="zelle-memo" data-i18n="pay.zelle.memo_empty">Enter your invoice number above</span>
+                    <button type="button" class="copy-btn" data-copy="zelle-memo" data-i18n="pay.copy">Copy</button>
+                  </span>
+                </span>
+              </div>
+              <p class="tip-note" data-i18n="pay.zelle.note">Zelle transfers usually arrive within minutes. We'll email your receipt once it lands — no need to send us a screenshot.</p>
+            </div>
+          </div>
+
+          <!-- VENMO INSTRUCTIONS -->
+          <div class="manual-panel" id="panel-venmo">
+            <div class="manual-head" data-i18n="pay.venmo.head">How to Pay by Venmo</div>
+            <div class="manual-body">
+              <div class="manual-step">
+                <span class="step-num">1</span>
+                <span class="step-text">
+                  <span data-i18n="pay.venmo.s1">Open Venmo and send payment to:</span>
+                  <span class="copy-line">
+                    <span class="copy-val" id="venmo-handle">@SLN-Enterprise</span>
+                    <button type="button" class="copy-btn" data-copy="venmo-handle" data-i18n="pay.copy">Copy</button>
+                  </span>
+                </span>
+              </div>
+              <div class="manual-step">
+                <span class="step-num">2</span>
+                <span class="step-text">
+                  <span data-i18n="pay.venmo.s2">Enter the exact total shown in your summary:</span>
+                  <span class="copy-line">
+                    <span class="copy-val" id="venmo-amount">$0.00</span>
+                    <button type="button" class="copy-btn" data-copy="venmo-amount" data-i18n="pay.copy">Copy</button>
+                  </span>
+                </span>
+              </div>
+              <div class="manual-step">
+                <span class="step-num">3</span>
+                <span class="step-text">
+                  <span data-i18n="pay.venmo.s3">Add your invoice number to the note:</span>
+                  <span class="copy-line">
+                    <span class="copy-val" id="venmo-memo" data-i18n="pay.zelle.memo_empty">Enter your invoice number above</span>
+                    <button type="button" class="copy-btn" data-copy="venmo-memo" data-i18n="pay.copy">Copy</button>
+                  </span>
+                </span>
+              </div>
+              <p class="tip-note" data-i18n="pay.venmo.note">Please send as a friends-and-family payment if Venmo asks — goods-and-services adds a fee on top of your invoice.</p>
+            </div>
+          </div>
+
+          <div class="form-error" id="form-error"></div>
+
+          <button type="submit" class="form-submit" id="submit-btn">
+            <span id="submit-label" data-i18n="pay.form.submit">Pay Securely</span>
+          </button>
+          <p class="form-note" id="submit-note" data-i18n="pay.form.note">You'll be taken to Stripe's secure checkout to finish. Your card details never touch our site.</p>
+
+          <div class="pay-badges">
+            <span class="pay-badge" data-i18n="pay.badge.ssl">256-bit SSL</span>
+            <span class="pay-badge" data-i18n="pay.badge.pci">PCI compliant</span>
+            <span class="pay-badge" data-i18n="pay.badge.stripe">Powered by Stripe</span>
+          </div>
+        </form>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- BOTTOM REASSURANCES -->
+<div class="pay-bottom">
+  <div class="pay-bottom-inner">
+    <div class="bottom-card">
+      <div class="bottom-icon">🧾</div>
+      <h4 data-i18n="pay.bottom.1.title">Need a Copy of Your Invoice?</h4>
+      <p><span data-i18n="pay.bottom.1.desc">Email us and we'll resend it right away —</span> <a href="mailto:info@slnenterprisellc.online">info@slnenterprisellc.online</a></p>
+    </div>
+    <div class="bottom-card">
+      <div class="bottom-icon">🛡️</div>
+      <h4 data-i18n="pay.bottom.2.title">Bonded &amp; Insured</h4>
+      <p data-i18n="pay.bottom.2.desc">SLN Enterprise LLC is fully licensed, bonded, and insured in Washington State. Your payment goes to a registered business.</p>
+    </div>
+    <div class="bottom-card">
+      <div class="bottom-icon">📞</div>
+      <h4 data-i18n="pay.bottom.3.title">Questions About a Charge?</h4>
+      <p><span data-i18n="pay.bottom.3.desc">Call us Mon–Fri, 8am–6pm at</span> <a href="tel:+12066099422">(206) 609-9422</a>. <span data-i18n="pay.bottom.3.desc2">We'd rather fix it than have you overpay.</span></p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div><div class="f-logo">SLN <span>Enterprise</span> LLC</div><p class="f-about" data-i18n="footer.about">Professional cleaning services for residential and commercial properties across Greater Seattle. Bonded, insured, and built on trust.</p></div>
+      <div class="f-col"><h5 data-i18n="footer.services_heading">Services</h5><a href="services.html" data-i18n="svc.res.title">Residential Cleaning</a><a href="services.html" data-i18n="svc.deep.title">Deep Cleaning</a><a href="services.html" data-i18n="svc.move.title">Move-In / Move-Out</a><a href="services.html" data-i18n="svc.comm.title">Commercial Cleaning</a><a href="services.html" data-i18n="svc.postc.title">Post-Construction</a></div>
+      <div class="f-col"><h5 data-i18n="footer.company_heading">Company</h5><a href="about.html" data-i18n="footer.company.about">About Us</a><a href="services.html" data-i18n="footer.company.services">Services</a><a href="blog/index.html" data-i18n="nav.blog">Blog</a><a href="contact.html" data-i18n="footer.company.contact">Contact</a><a href="pay.html" data-i18n="footer.company.pay">Pay an Invoice</a></div>
+      <div class="f-col"><h5 data-i18n="footer.contact_heading">Contact</h5><p>📍 <span data-i18n="footer.location">Seattle, WA</span></p><p>📞 (206) 609-9422</p><p>✉️ info@slnenterprisellc.online</p><p style="margin-top:.5rem;font-size:.75rem;line-height:1.8" data-i18n="footer.hours">Mon–Fri: 8am – 6pm<br>Sat: 9am – 4pm<br>Sun: By appointment</p></div>
+    </div>
+    <div class="footer-bottom"><span data-i18n="footer.copyright">© 2025 SLN Enterprise LLC. All rights reserved.</span><div class="f-bottom-links"><a href="#" data-i18n="footer.privacy">Privacy Policy</a><a href="#" data-i18n="footer.terms">Terms of Service</a><a href="contact.html" data-i18n="footer.company.contact">Contact</a></div></div>
+  </div>
+</footer>
+
+<button id="chat-bubble" aria-label="Chat with us">💬<span class="cw-badge">1</span></button>
+<div id="chat-panel"></div>
+
+<script>
+/* ══════════════════════════════════════════════════════════════
+   PAYMENT SETTINGS — edit these values, nothing else.
+   ══════════════════════════════════════════════════════════════ */
+var PAY_CONFIG = {
+  // Card payments via Stripe Checkout.
+  // Set to false to hide the card option entirely (manual methods only).
+  // Requires STRIPE_SECRET_KEY in Netlify → Site settings → Environment variables.
+  cardEnabled: true,
+
+  // Zelle. Use the phone number or email enrolled with your business bank account.
+  // Leave handle as an empty string ('') to hide the Zelle option.
+  zelleHandle: '(206) 609-9422',
+
+  // Venmo. Include the @. Leave as an empty string ('') to hide the Venmo option.
+  // ⚠️ Replace this placeholder with your real Venmo username before sharing the page.
+  venmoHandle: '',
+
+  // Guard rails on what a customer can enter, in dollars.
+  minAmount: 1,
+  maxAmount: 10000
+};
+/* ════════════════════ end of settings ════════════════════ */
+
+(function () {
+  'use strict';
+
+  var $ = function (id) { return document.getElementById(id); };
+  var fmt = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' });
+
+  /* ── Mobile nav ── */
+  $('hamburger').addEventListener('click', function () {
+    $('nav-links').classList.toggle('open');
+  });
+
+  /* ── Show/hide payment methods per config ── */
+  function applyConfig() {
+    var card = document.querySelector('.mopt[data-method="card"]');
+    var zelle = document.querySelector('.mopt[data-method="zelle"]');
+    var venmo = document.querySelector('.mopt[data-method="venmo"]');
+
+    if (!PAY_CONFIG.cardEnabled) card.remove();
+    if (!PAY_CONFIG.zelleHandle) zelle.remove();
+    else $('zelle-handle').textContent = PAY_CONFIG.zelleHandle;
+    if (!PAY_CONFIG.venmoHandle) venmo.remove();
+    else $('venmo-handle').textContent = PAY_CONFIG.venmoHandle;
+
+    // Make sure exactly one method is selected, whichever survived.
+    if (!document.querySelector('input[name="method"]:checked')) {
+      var first = document.querySelector('input[name="method"]');
+      if (first) first.checked = true;
+    }
+  }
+
+  /* ── Money helpers (all maths in integer cents) ── */
+  function toCents(str) {
+    if (!str) return 0;
+    var clean = String(str).replace(/[^0-9.]/g, '');
+    var parts = clean.split('.');
+    if (parts.length > 2) clean = parts[0] + '.' + parts.slice(1).join('');
+    var n = parseFloat(clean);
+    return isNaN(n) ? 0 : Math.round(n * 100);
+  }
+  function money(cents) { return fmt.format(cents / 100); }
+
+  function amountCents() { return toCents($('amount').value); }
+
+  function tipCents() {
+    var sel = document.querySelector('input[name="tip"]:checked');
+    if (!sel) return 0;
+    if (sel.value === 'custom') return toCents($('tip-custom').value);
+    return Math.round(amountCents() * (parseInt(sel.value, 10) / 100));
+  }
+
+  /* ── Live summary ── */
+  // Always read from the hidden block, never from a visible element the
+  // script may have already overwritten.
+  function dict(key, fallback) {
+    var el = document.querySelector('#i18n-strings [data-i18n="' + key + '"]');
+    return el ? el.textContent : fallback;
+  }
+
+  function refresh() {
+    var amt = amountCents();
+    var tip = tipCents();
+    var total = amt + tip;
+
+    var inv = $('invoice').value.trim();
+    var invRow = $('row-invoice');
+    if (inv) { $('sum-invoice').textContent = inv; invRow.classList.remove('muted'); }
+    else { $('sum-invoice').textContent = dict('pay.summary.pending', 'Not entered yet'); invRow.classList.add('muted'); }
+
+    var svc = $('service').value.trim();
+    var svcRow = $('row-service');
+    if (svc) { $('sum-service').textContent = svc; svcRow.classList.remove('muted'); }
+    else { $('sum-service').textContent = dict('pay.summary.pending', 'Not entered yet'); svcRow.classList.add('muted'); }
+
+    $('sum-amount').textContent = money(amt);
+    $('sum-tip').textContent = money(tip);
+    $('sum-total').textContent = money(total);
+
+    // Manual-payment panels mirror the same total and memo.
+    $('zelle-amount').textContent = money(total);
+    $('venmo-amount').textContent = money(total);
+    var memo = inv || dict('pay.zelle.memo_empty', 'Enter your invoice number above');
+    $('zelle-memo').textContent = memo;
+    $('venmo-memo').textContent = memo;
+
+    updateSubmit();
+  }
+
+  /* ── Submit button reflects the chosen method ── */
+  function currentMethod() {
+    var sel = document.querySelector('input[name="method"]:checked');
+    return sel ? sel.value : 'card';
+  }
+
+  function updateSubmit() {
+    var method = currentMethod();
+    var total = amountCents() + tipCents();
+    var btn = $('submit-btn');
+    var label = $('submit-label');
+    var note = $('submit-note');
+
+    if (method === 'card') {
+      btn.style.display = '';
+      note.style.display = '';
+      // One phrase with a placeholder, so translators control the word order.
+      label.textContent = total > 0
+        ? dict('pay.form.submit_total', 'Pay {amount} securely').replace('{amount}', money(total))
+        : dict('pay.form.submit', 'Pay Securely');
+    } else {
+      // Manual methods are completed in the customer's own banking app —
+      // there is nothing for this button to submit.
+      btn.style.display = 'none';
+      note.style.display = 'none';
+    }
+  }
+
+  function showPanels() {
+    var method = currentMethod();
+    $('panel-zelle').classList.toggle('show', method === 'zelle');
+    $('panel-venmo').classList.toggle('show', method === 'venmo');
+    updateSubmit();
+  }
+
+  /* ── Prefill from the link (pay.html?invoice=1042&amount=250&name=Jane) ── */
+  function prefill() {
+    var q = new URLSearchParams(window.location.search);
+    var map = { invoice: 'invoice', amount: 'amount', name: 'name', email: 'email', address: 'address' };
+    Object.keys(map).forEach(function (key) {
+      var val = q.get(key);
+      if (val) $(map[key]).value = val.slice(0, 140);
+    });
+
+    var amt = q.get('amount');
+    if (amt) {
+      var cents = toCents(amt);
+      if (cents > 0) $('amount').value = (cents / 100).toFixed(2);
+    }
+
+    var svc = q.get('service');
+    if (svc) {
+      var opts = $('service').options;
+      for (var i = 0; i < opts.length; i++) {
+        if (opts[i].text.toLowerCase() === svc.toLowerCase()) { $('service').selectedIndex = i; break; }
+      }
+    }
+
+    // Stripe sends the customer back here if they close the checkout.
+    // Reassure them rather than dropping them on a blank form.
+    if (q.get('canceled')) {
+      var box = $('form-error');
+      box.textContent = dict('pay.error.canceled', 'No payment was taken.');
+      box.classList.add('show', 'info');
+    }
+  }
+
+  /* ── Validation ── */
+  function setErr(field, on) {
+    $(field).classList.toggle('invalid', on);
+    var err = $('err-' + field);
+    if (err) err.classList.toggle('show', on);
+    return !on;
+  }
+
+  function validate() {
+    var ok = true;
+    ok = setErr('invoice', $('invoice').value.trim().length === 0) && ok;
+    ok = setErr('name', $('name').value.trim().length === 0) && ok;
+
+    var email = $('email').value.trim();
+    ok = setErr('email', !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) && ok;
+
+    var cents = amountCents();
+    var bad = cents < PAY_CONFIG.minAmount * 100 || cents > PAY_CONFIG.maxAmount * 100;
+    ok = setErr('amount', bad) && ok;
+
+    return ok;
+  }
+
+  function showFormError(html) {
+    var box = $('form-error');
+    box.innerHTML = html;
+    box.classList.add('show');
+    box.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+
+  /* ── Card checkout ── */
+  function startCheckout(e) {
+    e.preventDefault();
+    // Drop the neutral "you closed the checkout" styling too, so a real
+    // failure after a cancelled attempt still reads as an error.
+    $('form-error').classList.remove('show', 'info');
+
+    if (currentMethod() !== 'card') return;
+    if (!validate()) return;
+
+    var btn = $('submit-btn');
+    var label = $('submit-label');
+    var original = label.textContent;
+    btn.disabled = true;
+    label.textContent = dict('pay.form.submitting', 'Opening secure checkout…');
+
+    fetch('/.netlify/functions/create-checkout-session', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        invoice: $('invoice').value.trim(),
+        name: $('name').value.trim(),
+        email: $('email').value.trim(),
+        address: $('address').value.trim(),
+        service: $('service').value.trim(),
+        amountCents: amountCents(),
+        tipCents: tipCents()
+      })
+    })
+      .then(function (res) {
+        return res.json().then(function (data) {
+          if (!res.ok) throw new Error(data.error || 'Checkout is unavailable right now.');
+          return data;
+        });
+      })
+      .then(function (data) {
+        if (!data.url) throw new Error('Checkout is unavailable right now.');
+        window.location.href = data.url;
+      })
+      .catch(function (err) {
+        btn.disabled = false;
+        label.textContent = original;
+        var fallback = PAY_CONFIG.zelleHandle
+          ? ' ' + dict('pay.error.fallback', 'You can also pay by Zelle using the option above, or call us at') + ' <a href="tel:+12066099422">(206) 609-9422</a>.'
+          : ' <a href="tel:+12066099422">(206) 609-9422</a>';
+        showFormError(escapeHtml(err.message) + fallback);
+      });
+  }
+
+  function escapeHtml(str) {
+    return String(str).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+
+  /* ── Copy buttons ── */
+  function bindCopy() {
+    document.querySelectorAll('.copy-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var text = $(btn.getAttribute('data-copy')).textContent.trim();
+        var done = function () {
+          var was = btn.textContent;
+          btn.textContent = dict('pay.copied', 'Copied');
+          btn.classList.add('done');
+          setTimeout(function () { btn.textContent = was; btn.classList.remove('done'); }, 1800);
+        };
+        if (navigator.clipboard && window.isSecureContext) {
+          navigator.clipboard.writeText(text).then(done).catch(function () {});
+        } else {
+          // Fallback for browsers without the async clipboard API.
+          var ta = document.createElement('textarea');
+          ta.value = text;
+          ta.style.position = 'fixed';
+          ta.style.opacity = '0';
+          document.body.appendChild(ta);
+          ta.select();
+          try { document.execCommand('copy'); done(); } catch (err) {}
+          document.body.removeChild(ta);
+        }
+      });
+    });
+  }
+
+  /* ── Wire everything up ── */
+  applyConfig();
+  prefill();
+  bindCopy();
+
+  ['invoice', 'amount', 'service'].forEach(function (id) {
+    $(id).addEventListener('input', refresh);
+    $(id).addEventListener('change', refresh);
+  });
+  $('tip-custom').addEventListener('input', refresh);
+
+  document.querySelectorAll('input[name="tip"]').forEach(function (r) {
+    r.addEventListener('change', function () {
+      $('tip-custom-wrap').classList.toggle('show', r.value === 'custom' && r.checked);
+      if (r.value === 'custom' && r.checked) $('tip-custom').focus();
+      refresh();
+    });
+  });
+
+  document.querySelectorAll('input[name="method"]').forEach(function (r) {
+    r.addEventListener('change', showPanels);
+  });
+
+  // Tidy the amount to 2 decimals once the customer moves on.
+  $('amount').addEventListener('blur', function () {
+    var c = amountCents();
+    if (c > 0) $('amount').value = (c / 100).toFixed(2);
+    refresh();
+  });
+
+  $('pay-form').addEventListener('submit', startCheckout);
+
+  showPanels();
+  refresh();
+
+  // Re-run the summary after a language switch repaints the labels.
+  window.addEventListener('load', function () { setTimeout(refresh, 400); });
+})();
+</script>
+<script src="chat.js"></script>
+<script src="i18n.js"></script>
+</body>
+</html>

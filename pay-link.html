@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Invoice Link Generator — SLN Enterprise LLC (Internal)</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✦</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --black:#080808;--dark:#0E0D0D;--surf:#151212;--surf2:#1B1818;
+  --cream:#EDE8DF;--gold:#C4A265;--gold2:#D4B483;
+  --gb:rgba(196,162,101,.18);
+  --t1:#EDE8DF;--t2:rgba(237,232,223,.55);--t3:rgba(237,232,223,.3);
+}
+body{font-family:'Inter',sans-serif;background:var(--dark);color:var(--t1);-webkit-font-smoothing:antialiased;padding:3rem 6%}
+h1,h2,h3{font-family:'Cormorant Garamond',serif}
+a{color:var(--gold);text-decoration:none}
+.wrap{max-width:860px;margin:0 auto}
+
+.head{margin-bottom:2.5rem}
+.kicker{display:flex;align-items:center;gap:.85rem;margin-bottom:1rem}
+.kicker-line{width:28px;height:1px;background:var(--gold)}
+.kicker-text{font-size:.63rem;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);font-weight:500}
+h1{font-size:clamp(1.9rem,4vw,2.8rem);font-weight:300;color:var(--cream);line-height:1.15;margin-bottom:.85rem}
+h1 em{font-style:italic;color:var(--gold)}
+.head p{font-size:.88rem;color:var(--t2);line-height:1.9;max-width:560px}
+
+.panel{border:1px solid var(--gb);background:var(--surf);margin-bottom:1.5rem}
+.panel-head{padding:.9rem 1.75rem;border-bottom:1px solid var(--gb);font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+.panel-body{padding:1.75rem}
+
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:.85rem}
+.fg{display:flex;flex-direction:column;gap:.4rem}
+.fg.full{grid-column:1/-1}
+.fg label{font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;color:var(--t3)}
+.fg input,.fg select{background:var(--surf2);border:1px solid var(--gb);color:var(--cream);padding:.75rem 1rem;font-family:'Inter',sans-serif;font-size:.88rem;outline:none;transition:border-color .2s;appearance:none;-webkit-appearance:none;width:100%}
+.fg input:focus,.fg select:focus{border-color:var(--gold)}
+.fg select option{background:var(--surf2)}
+.hint{font-size:.72rem;color:var(--t3);line-height:1.65}
+
+.out{background:var(--surf2);border:1px solid var(--gb);padding:1rem 1.15rem;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.8rem;color:var(--gold);word-break:break-all;line-height:1.7;min-height:3.2rem}
+.out.msg{font-family:'Inter',sans-serif;color:var(--cream);white-space:pre-wrap;word-break:normal}
+.btn-row{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:.85rem}
+.btn{background:transparent;border:1px solid var(--gb);color:var(--t2);font-family:'Inter',sans-serif;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;padding:.65rem 1.1rem;cursor:pointer;transition:all .2s;display:inline-block}
+.btn:hover{border-color:var(--gold);color:var(--gold)}
+.btn.primary{background:var(--gold);border-color:var(--gold);color:var(--dark);font-weight:600}
+.btn.primary:hover{background:var(--gold2)}
+.btn.done{border-color:var(--gold);color:var(--gold)}
+
+.note{border:1px solid var(--gb);background:rgba(196,162,101,.05);padding:1.15rem 1.35rem;font-size:.8rem;color:var(--t2);line-height:1.8}
+.note strong{color:var(--cream);font-weight:500}
+
+@media(max-width:640px){body{padding:2rem 5%}.grid{grid-template-columns:1fr}.fg.full{grid-column:1}.panel-body{padding:1.25rem}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="head">
+    <div class="kicker"><div class="kicker-line"></div><span class="kicker-text">Internal Tool — Not Linked Publicly</span></div>
+    <h1>Invoice <em>Link</em> Generator</h1>
+    <p>Fill in the invoice details, then copy the link or the ready-made message and send it to your customer. The payment page opens with everything already filled in — all they do is confirm and pay.</p>
+  </div>
+
+  <div class="panel">
+    <div class="panel-head">Invoice Details</div>
+    <div class="panel-body">
+      <div class="grid">
+        <div class="fg">
+          <label for="g-invoice">Invoice Number</label>
+          <input type="text" id="g-invoice" placeholder="INV-1042" autocomplete="off">
+        </div>
+        <div class="fg">
+          <label for="g-amount">Amount Due (USD)</label>
+          <input type="text" id="g-amount" inputmode="decimal" placeholder="220.00" autocomplete="off">
+        </div>
+        <div class="fg">
+          <label for="g-name">Customer Name</label>
+          <input type="text" id="g-name" placeholder="Jane Smith" autocomplete="off">
+        </div>
+        <div class="fg">
+          <label for="g-email">Customer Email</label>
+          <input type="email" id="g-email" placeholder="jane@example.com" autocomplete="off">
+        </div>
+        <div class="fg">
+          <label for="g-service">Service Provided</label>
+          <select id="g-service">
+            <option value="">Select…</option>
+            <option>Residential Cleaning</option>
+            <option>Deep Cleaning</option>
+            <option>Move-In / Move-Out</option>
+            <option>Commercial Cleaning</option>
+            <option>Post-Construction</option>
+            <option>Other / Multiple Services</option>
+          </select>
+        </div>
+        <div class="fg">
+          <label for="g-address">Service Address</label>
+          <input type="text" id="g-address" placeholder="Capitol Hill, Seattle" autocomplete="off">
+        </div>
+        <div class="fg full">
+          <span class="hint">Only the invoice number and amount really matter — the rest just saves your customer some typing. Every field stays editable on their end.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <div class="panel-head">Payment Link</div>
+    <div class="panel-body">
+      <div class="out" id="out-link">https://slnenterprisellc.online/pay.html</div>
+      <div class="btn-row">
+        <button type="button" class="btn primary" data-copy="out-link">Copy Link</button>
+        <a class="btn" id="preview" href="pay.html" target="_blank" rel="noopener">Preview It</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <div class="panel-head">Ready-to-Send Message</div>
+    <div class="panel-body">
+      <div class="out msg" id="out-msg"></div>
+      <div class="btn-row">
+        <button type="button" class="btn primary" data-copy="out-msg">Copy Message</button>
+        <a class="btn" id="mailto" href="#">Open in Email</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="note">
+    <strong>Keep this page to yourself.</strong> It is marked <em>noindex, nofollow</em> so search engines skip it, and nothing on the public site links here — but anyone with the address can open it. Bookmark it rather than sharing it. Customers only ever need <a href="pay.html">pay.html</a>.
+  </div>
+
+</div>
+
+<script>
+(function () {
+  'use strict';
+  var $ = function (id) { return document.getElementById(id); };
+
+  // Works on the live domain and on a local preview alike.
+  var BASE = (function () {
+    var origin = window.location.origin;
+    if (!origin || origin === 'null' || origin.indexOf('file:') === 0) {
+      return 'https://slnenterprisellc.online';
+    }
+    return origin;
+  })();
+
+  var fields = ['invoice', 'amount', 'name', 'email', 'service', 'address'];
+
+  function values() {
+    var out = {};
+    fields.forEach(function (f) { out[f] = $('g-' + f).value.trim(); });
+    return out;
+  }
+
+  function normalisedAmount(raw) {
+    var n = parseFloat(String(raw).replace(/[^0-9.]/g, ''));
+    return isNaN(n) || n <= 0 ? '' : n.toFixed(2);
+  }
+
+  function buildLink(v) {
+    var q = new URLSearchParams();
+    if (v.invoice) q.set('invoice', v.invoice);
+    var amt = normalisedAmount(v.amount);
+    if (amt) q.set('amount', amt);
+    if (v.name) q.set('name', v.name);
+    if (v.email) q.set('email', v.email);
+    if (v.service) q.set('service', v.service);
+    if (v.address) q.set('address', v.address);
+    var qs = q.toString();
+    return BASE + '/pay.html' + (qs ? '?' + qs : '');
+  }
+
+  function buildMessage(v, link) {
+    var first = v.name ? v.name.split(' ')[0] : 'there';
+    var amt = normalisedAmount(v.amount);
+    var lines = [];
+    lines.push('Hi ' + first + ',');
+    lines.push('');
+    lines.push('Thank you for choosing SLN Enterprise LLC. Your invoice'
+      + (v.invoice ? ' ' + v.invoice : '')
+      + (amt ? ' for $' + amt : '')
+      + ' is ready.');
+    lines.push('');
+    lines.push('You can pay securely online here:');
+    lines.push(link);
+    lines.push('');
+    lines.push('Card, Apple Pay, Google Pay, and Zelle are all accepted, and your receipt is emailed to you automatically.');
+    lines.push('');
+    lines.push('Any questions, just reply or give us a call at (206) 609-9422.');
+    lines.push('');
+    lines.push('Warmly,');
+    lines.push('SLN Enterprise LLC');
+    return lines.join('\n');
+  }
+
+  function refresh() {
+    var v = values();
+    var link = buildLink(v);
+    var msg = buildMessage(v, link);
+
+    $('out-link').textContent = link;
+    $('out-msg').textContent = msg;
+    $('preview').href = link;
+
+    var subject = 'Your invoice from SLN Enterprise LLC' + (v.invoice ? ' — ' + v.invoice : '');
+    $('mailto').href = 'mailto:' + encodeURIComponent(v.email || '')
+      + '?subject=' + encodeURIComponent(subject)
+      + '&body=' + encodeURIComponent(msg);
+  }
+
+  fields.forEach(function (f) {
+    $('g-' + f).addEventListener('input', refresh);
+    $('g-' + f).addEventListener('change', refresh);
+  });
+
+  document.querySelectorAll('[data-copy]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var text = $(btn.getAttribute('data-copy')).textContent;
+      var done = function () {
+        var was = btn.textContent;
+        btn.textContent = 'Copied';
+        btn.classList.add('done');
+        setTimeout(function () { btn.textContent = was; btn.classList.remove('done'); }, 1800);
+      };
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(text).then(done).catch(function () {});
+      } else {
+        var ta = document.createElement('textarea');
+        ta.value = text;
+        ta.style.position = 'fixed';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.select();
+        try { document.execCommand('copy'); done(); } catch (err) {}
+        document.body.removeChild(ta);
+      }
+    });
+  });
+
+  refresh();
+})();
+</script>
+</body>
+</html>
