@@ -3,8 +3,29 @@
 
   const GREETING = "Hey! I'm Alexis, SLN Enterprise's 24/7 assistant 👋 Whether it's noon or 3am, I'm here to help. What can I do for you today?";
 
-  let history = [];
+  const STORE_KEY = 'sln_chat_history';
+
+  // Persisted so the conversation survives page navigation and refreshes.
+  let history = loadHistory();
   let isTyping = false;
+
+  function loadHistory() {
+    try {
+      const raw = sessionStorage.getItem(STORE_KEY);
+      const parsed = raw ? JSON.parse(raw) : [];
+      return Array.isArray(parsed) ? parsed : [];
+    } catch {
+      return [];
+    }
+  }
+
+  function saveHistory() {
+    try {
+      sessionStorage.setItem(STORE_KEY, JSON.stringify(history.slice(-40)));
+    } catch {
+      /* storage unavailable (private mode / quota) — chat still works in-memory */
+    }
+  }
 
   /* ── Build the widget HTML into the existing #chat-panel ── */
   function buildWidget() {
@@ -47,8 +68,24 @@
       if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(); }
     });
 
-    // Show greeting after slight delay
-    setTimeout(() => addBotMessage(GREETING), 400);
+    if (history.length) {
+      restoreMessages();
+    } else {
+      setTimeout(() => addBotMessage(GREETING), 400);
+    }
+  }
+
+  /* ── Re-render a previously saved conversation ── */
+  function restoreMessages() {
+    const msgs = document.getElementById('cw-messages');
+    if (!msgs) return;
+    for (const m of history) {
+      const el = document.createElement('div');
+      el.className = 'cw-msg ' + (m.role === 'user' ? 'cw-msg-user' : 'cw-msg-bot');
+      el.innerHTML = `<div class="cw-bubble">${escHtml(m.content)}</div>`;
+      msgs.appendChild(el);
+    }
+    scrollToBottom();
   }
 
   /* ── Toggle / open / close ── */
@@ -86,6 +123,7 @@
     msgs.appendChild(el);
     scrollToBottom();
     history.push({ role: 'assistant', content: text });
+    saveHistory();
   }
 
   /* ── Render a user message ── */
@@ -126,6 +164,7 @@
     input.value = '';
     addUserMessage(text);
     history.push({ role: 'user', content: text });
+    saveHistory();
 
     isTyping = true;
     setSendDisabled(true);

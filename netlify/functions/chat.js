@@ -1,5 +1,6 @@
 const fs   = require('fs');
 const path = require('path');
+const db   = require('../lib/supabase');
 
 /* ── Knowledge base ── */
 function loadKnowledgeBase() {
@@ -65,26 +66,38 @@ Only include JSON fields you actually collected. Omit unknown fields entirely. N
 /* ── Lead capture → Supabase ── */
 const LEAD_REGEX = /<<LEAD:(\{[\s\S]*?\})>>/;
 
-async function saveLead(lead) {
-  const supabaseUrl = process.env.SUPABASE_URL;
-  const supabaseKey = process.env.SUPABASE_ANON_KEY;
-  if (!supabaseUrl || supabaseUrl === 'your_supabase_url_here') return;
+/* The model emits a loose {name, contact, service, location, notes} shape.
+   Map it onto the real `leads` columns, splitting `contact` into phone/email. */
+async function saveLead(raw, messages) {
+  const lead = {
+    name: raw.name,
+    location: raw.location,
+    service_requested: raw.service,
+    notes: raw.notes,
+    ...db.splitContact(raw.contact),
+    source: 'chatbot',
+    status: 'new',
+    created_at: new Date().toISOString(),
+  };
+  // Explicit fields win over anything parsed out of `contact`.
+  if (raw.email) lead.email = raw.email;
+  if (raw.phone) lead.phone = raw.phone;
 
-  try {
-    const res = await fetch(`${supabaseUrl}/rest/v1/leads`, {
-      method: 'POST',
-      headers: {
-        'apikey': supabaseKey,
-        'Authorization': `Bearer ${supabaseKey}`,
-        'Content-Type': 'application/json',
-        'Prefer': 'return=minimal',
-      },
-      body: JSON.stringify({ ...lead, created_at: new Date().toISOString() }),
-    });
-    if (!res.ok) console.error('[lead error]', await res.text());
-  } catch (err) {
-    console.error('[lead save failed]', err.message);
-  }
+  lead.lead_score = db.scoreLead(lead);
+  lead.summary = `${lead.service_requested || 'Cleaning'} enquiry from ${lead.name || 'chat visitor'}`;
+
+  // Keep the transcript so the team can see what was already discussed.
+  const convo = await db.insert('conversations', {
+    transcript: JSON.stringify(messages),
+    channel: 'website_chat',
+    created_at: new Date().toISOString(),
+  }, true);
+  if (convo && convo.id) lead.conversation_id = convo.id;
+
+  await Promise.allSettled([
+    db.insert('leads', lead),
+    db.notifyLead(lead),
+  ]);
 }
 
 /* ── Handler ── */
@@ -156,7 +169,7 @@ exports.handler = async (event) => {
     if (leadMatch) {
       try {
         const lead = JSON.parse(leadMatch[1]);
-        await saveLead(lead);
+        await saveLead(lead, [...messages, { role: 'assistant', content: reply }]);
       } catch (e) {
         console.error('[lead parse error]', e.message);
       }
