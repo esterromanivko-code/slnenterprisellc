@@ -1,5 +1,6 @@
 const fs   = require('fs');
 const path = require('path');
+const { randomUUID } = require('crypto');
 const db   = require('../lib/supabase');
 
 /* ── Knowledge base ── */
@@ -87,12 +88,16 @@ async function saveLead(raw, messages) {
   lead.summary = `${lead.service_requested || 'Cleaning'} enquiry from ${lead.name || 'chat visitor'}`;
 
   // Keep the transcript so the team can see what was already discussed.
+  // The id is generated here rather than read back: anon holds INSERT but not
+  // SELECT on these tables, so asking PostgREST to return the row would fail.
+  const conversationId = randomUUID();
   const convo = await db.insert('conversations', {
+    id: conversationId,
     transcript: JSON.stringify(messages),
     channel: 'website_chat',
     created_at: new Date().toISOString(),
-  }, true);
-  if (convo && convo.id) lead.conversation_id = convo.id;
+  });
+  if (convo !== false) lead.conversation_id = conversationId;
 
   await Promise.allSettled([
     db.insert('leads', lead),

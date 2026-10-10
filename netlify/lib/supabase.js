@@ -22,11 +22,14 @@ function headers(extra) {
   };
 }
 
-/* Insert one row. Returns the created row when `select` is true, else null. */
+/* Insert one row. Returns false if the write failed, the created row when
+   `select` is true, and true otherwise. Callers must treat false as "this row
+   does not exist" — writing a foreign key to a row that was never created
+   would reject the referencing insert too. */
 async function insert(table, row, select) {
   if (!configured()) {
     console.warn(`[supabase] not configured — skipped insert into ${table}`);
-    return null;
+    return false;
   }
   try {
     const res = await fetch(`${URL}/rest/v1/${table}`, {
@@ -36,14 +39,14 @@ async function insert(table, row, select) {
     });
     if (!res.ok) {
       console.error(`[supabase] insert ${table} failed ${res.status}:`, await res.text());
-      return null;
+      return false;
     }
-    if (!select) return null;
+    if (!select) return true;
     const rows = await res.json();
     return Array.isArray(rows) ? rows[0] : rows;
   } catch (err) {
     console.error(`[supabase] insert ${table} threw:`, err.message);
-    return null;
+    return false;
   }
 }
 
